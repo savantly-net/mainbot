@@ -1,0 +1,71 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.1'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'net.savantly'
+version = '0.0.1-SNAPSHOT'
+
+
+java {
+	sourceCompatibility = '17'
+	targetCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+test {
+     filter {
+		// exlude integration tests
+        excludeTestsMatching "*IntTest"
+     }
+ }
+
+dependencies {
+	implementation platform('software.amazon.awssdk:bom:2.21.5')
+	implementation 'software.amazon.awssdk:s3'
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'com.h2database:h2'
+
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+
+	// implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation ('org.springframework.boot:spring-boot-starter-web')
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.springframework.security:spring-security-messaging'
+
+	
+	implementation 'dev.langchain4j:langchain4j:0.25.0'
+	implementation 'dev.langchain4j:langchain4j-open-ai:0.25.0'
+	implementation 'dev.langchain4j:langchain4j-pinecone:0.25.0'
+
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.2'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.2'
+
+	// implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.1.0'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+
+
+	compileOnly 'org.projectlombok:lombok:1.18.28'
+	annotationProcessor 'org.projectlombok:lombok:1.18.28'
+	testCompileOnly 'org.projectlombok:lombok:1.18.28'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

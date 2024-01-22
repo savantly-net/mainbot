@@ -1,0 +1,442 @@
+The following articles were scraped from http://blog.savantly.net 
+
+
+
+---
+Jeremy Branham
+Mar 22, 2023 • 1 min read
+The Technology to Succeed.
+Savantly will help your business succeed. We'll work with you to select, implement, and adapt the correct technology for your unique requirements.
+
+ In today's fast-paced digital world, technology plays a crucial role in driving business success. Companies that want to stay competitive must have a robust and reliable technology infrastructure that can support their business processes and enable them to innovate and grow.
+
+ Enter Savantly.
+ We're a technology company that specializes in enterprise architecture.
+With our team of experienced technology experts, Savantly provides a wide range of services, including big data support, data analytics, CICD, DevOps, infrastructure management, site reliability engineering, web hosting, and custom application development.
+
+ At the heart of Savantly's offering is our expertise in big data and data analytics.
+In today's data-driven business environment, companies generate vast amounts of data that can be harnessed to gain valuable insights and drive better decision-making.
+Our big data and analytics solutions enable companies to capture, store, and analyze data to uncover trends, patterns, and insights that can inform business strategy.
+
+ In addition to big data and analytics, Savantly also provides a range of other services that help companies optimize their technology infrastructure and processes.
+Our CICD and DevOps services enable companies to automate their software development and deployment processes, reducing costs and speeding up time to market.
+Our infrastructure management and site reliability engineering services ensure that companies have a reliable and scalable infrastructure that can support their business needs.
+And our web hosting and custom application development services enable companies to create and host high-quality, customized web applications that meet their unique business requirements.
+
+ We are an innovative technology company that provides a comprehensive range of enterprise technology services. Our team of experts is dedicated to helping companies harness the power of technology to achieve their business goals and stay ahead of the competition.
+If you're looking for a technology partner that can help you optimize your infrastructure and processes, then Savantly is the company for you.
+
+
+
+---
+Jeremy Branham
+Mar 27, 2023 • 2 min read
+Marketing for your construction company
+Marketing for a construction company can be a challenging task, especially in an industry that is highly competitive and constantly evolving. However, with the right strategy, a construction company can effectively promote its services and build a strong reputation in the market.
+
+Here are some tips to help you create a successful marketing strategy for your construction company:
+
+Define Your Target Audience: Before you start marketing your construction company, it is essential to define your target audience. Identify the demographics of your ideal clients, such as their age, income, and location. This information will help you tailor your marketing message to the right audience.
+Build a Strong Brand: Building a strong brand is crucial for a construction company's success. Develop a clear brand message and use it consistently across all your marketing channels. This will help your target audience recognize and remember your brand.
+Use Social Media: Social media is an excellent platform for construction companies to promote their services. Share images and videos of your work, engage with your followers, and post regular updates about your projects. This will help you build a strong online presence and attract potential clients.
+Optimize Your Website: Your website is your online storefront, so it's important to ensure that it is optimized for search engines. Use relevant keywords, create engaging content, and make sure your website is mobile-friendly.
+Attend Trade Shows and Conferences: Attending trade shows and conferences is an excellent way to network with potential clients and promote your construction services. These events provide an opportunity to showcase your work, meet industry experts, and stay up-to-date with the latest industry trends.
+Build Relationships with Clients: Building strong relationships with clients is essential for a construction company's success. Provide excellent customer service, be responsive to their needs, and follow up after a project is completed. These actions can help you build a loyal client base and generate referrals.
+Marketing for a construction company requires a strategic approach. By defining your target audience, building a strong brand, using social media, optimizing your website, attending trade shows and conferences, and building relationships with clients, you can effectively promote your construction services and build a strong reputation in the market.
+
+Savantly specializes in providing innovative technology solutions that can help businesses like yours grow and succeed in today's digital landscape.
+
+As a construction company, you may be looking for ways to improve your online presence, attract more customers, and promote your services. Savantly can assist you in achieving these goals through a range of services, including website design and development, search engine optimization, social media marketing, email marketing, and more.
+
+What sets Savantly apart from other marketing companies is our commitment to providing personalized and tailored solutions that meet our clients' unique needs. We work closely with our clients to understand your business goals, target audience, and budget, and then develop a marketing strategy that is customized to your specific needs.
+
+Savantly has a proven track record of delivering high-quality results for our clients, and we can do the same for your construction company. Our team of experts is knowledgeable, experienced, and passionate about helping businesses like yours succeed.
+
+If you're interested in learning more about how Savantly can help your construction company with its marketing efforts, I encourage you to reach out and schedule a consultation. I'm confident that you'll be impressed with our expertise and the level of service we provide.
+
+
+
+---
+Jeremy Branham
+Apr 2, 2023 • 7 min read
+Reduce Technology Costs for Your Business
+As a seasoned engineer and architect, I've had the opportunity to work on dozens of corporate projects. Over the years, I've noticed a recurring problem in almost every non-trivial implementation: the domain-specific development of application logic only accounts for a small portion of the total cost, and the majority of time is spent on boilerplate code, processes, and infrastructure.
+This is even more pronounced when using off-the-shelf web applications because there's little to no code development, whether it's proprietary, open-source, or custom development.
+
+This begs the question: why do we spend so much time doing these repetitive tasks?
+
+Some SAAS companies have done a good job at reducing the boilerplate, and have good entry pricing. But as a business matures, various frameworks or products may be appropriate at entry but fail to scale either in performance or price over time. With a smaller business, budgets are typically smaller, and freemium/cheap applications can be appealing. However, the cost benefits can drop rapidly when the business starts to grow.
+
+Of course there are exceptions, where a SAAS is exceptionally good at a particular feature, makes it easy to integrate their product with other services, and scales pricing appropriately with the business. But many of these still hold the "enterprise" features behind a paywall too large for startups and small business.
+
+There are also many "easy button" website hosting companies today where you can register your domain name and get a cheap monthly hosting service on a LAMP (Linux, Apache, MySql, Php) stack made popular by WordPress.
+Or like GoDaddy, a hosting provider may provision you a server with CPanel and WHM installed, where you have free reign to manage the server how you like.
+While there may still be use cases for this setup, I'm usually called when this solution isn't working anymore.
+
+Performance and Security
+One of the most common issues I encounter is performance. When businesses outgrow their current infrastructure, they often experience slow load times, crashes, and downtime. These issues can have a significant impact on a business's bottom line, leading to lost sales, decreased customer satisfaction, and damaged brand reputation.
+
+In the 1990's a single server with a LAMP stack worked fine for many businesses because the internet was slow and we optimized our content to compensate, and there was little expectation of performance because everyone's site was slow.
+
+Lyn Wildwood wrote a great article outlining some interesting performance impacts -
+
+Conversion rates are 3x higher for ecommerce sites that load in 1 second. (Portent)
+For lead generation, sites that load in 1 second have conversion rates of 39% (Portent)
+The average page speed of a first-page Google result is 1.65 seconds. (Backlinko)
+The average page speed of a website is 3.21 seconds. (Pingdom)
+Sites that load in 1 second have a 7% bounce rate. (Pingdom)
+82% of consumers say slow page speeds impact their purchasing decisions. (Unbounce)
+Prefetching performed by Facebook improves page speed by as much as 25%. (Facebook)
+Source - https://bloggingwizard.com/page-load-time-statistics/
+
+To say website performance is important for your bottom-line, is an understatement.
+
+Another challenge with relying on a hosting provider's LAMP stack is the total cost of ownership. While the monthly fee may seem reasonable, it's important to consider the long-term costs associated with managing servers. As your business grows, you may need to upgrade to more powerful servers or add additional services, which can quickly become expensive.
+You'll need to continuously patch out-of-date software and configurations to avoid security vulnerabilities, and make different software "play nice" with each other.
+Managing servers take a lot of time and expertise that most small businesses don't have, and paying someone to do it is like rearranging deck chairs on a sinking ship. At some point the cost outweighs the benefit and you'll need to migrate to a more efficient solution to remain competitive.
+
+In my experience, one security breach is enough to convince most people to consider an alternative to managing legacy servers.
+
+Another issue, is the contention of resources available on a single server.
+When the database, application, and web server all share the same resources, the server itself is the bottleneck. One way to scale out would be to move the database onto a new server so it's not fighting for resources. This was a typical process I'd done for apps prior to ~2015 (a new approach is described further down).
+But now we have 2 servers that need patching, security scans, etc... and the total cost of ownership is growing fast.
+Assuming your business continues to grow, eventually we'll need to consider how to further scale a database beyond a single server.
+
+I've not even touched on server failover or high availability, which adds more complexity and cost.
+Suppose you have high traffic only during a certain time of the day.
+Do you scale everything up so that your system doesn't crash during peak time? How do you feel about paying for resources all the time, that are only used 10% of the time?
+
+Imagining a freeway is a good example. During "rush hour", all the lanes get jammed up, but they may be mostly empty the rest of the hours of the day.
+As drivers, we like moving down the road at a steady pace.
+But as a business owner, if those lanes represent CPU and Memory resources, we don't like to pay for resources that aren't used.
+What if the freeway lanes could replicate themselves depending on the amount of traffic? So that you always get somewhere at the same rate no matter how bad the traffic gets.
+
+A modern approach
+Dynamic horizontal scalability may not be possible with freeways yet (darn), but modern technology like "containerization" and automation make this possible with our web applications (nice!).
+
+In contrast to legacy server installations, containerized workloads have a thin operating system "baked in" to the application image, or in some cases no operating system at all. Using hardened security base images also makes it easier to prevent vulnerabilities.
+
+I've built dynamic scaling for many companies, including scaling custom apps and various web processes and applications.
+In one case, for a rapidly growing company, I moved several WordPress sites off GoDaddy and into this dynamic architecture. We found that we needed 5x the amount of resources around lunch and dinner time, and the rest of the time there was minimal traffic.
+It would take another large article to describe the case study, but in summary, we built a modern data lake/pipeline/and warehouse, Kafka message bus, deployed several WordPress sites, a custom application for managing their business data, an internal "Enterprise Portal", a digital asset manager, a full oauth solution for SSO, and several other apps and event driven processes. The total monthly infrastructure costs are around $2.5k. This is a fraction of what it would cost to piece together different SAAS products.
+
+As an example - WP Engine offers an enterprise level package that costs over $66k/year.
+https://aws.amazon.com/marketplace/pp/prodview-olkg3x54zujdc
+
+That's just WordPress. If you want enterprise grade SSO, an internal portal, or other apps, you'll pay significantly more - and need the expertise to fit them together.
+
+We've done the hard work
+Considering the cost of enterprise grade services, we built a custom platform on the cloud with cost, scalability, and security as primary considerations. We expect to grow, and our IT costs should not outpace our profit!
+While it required a significant investment of time and resources upfront, the long-term benefits have been well worth it. By managing our own infrastructure with modern IAC/containerization/automation, we have complete control over the technology stack, ensuring that it's tailored to the specific needs of our business. Plus, we've been able to optimize performance and reduce costs by eliminating unnecessary services and processes.
+
+Of course, building your own infrastructure isn't for everyone. It requires a certain level of technical expertise and a willingness to invest time and resources upfront.
+This is why we're now offering our platform as a managed service. Using modern automation, we can onboard a company with enterprise grade services for an entry price less than a typical enterprise plan, for any single product.
+
+Features like "Single Sign On", failover servers, load balancing, dynamic scaling, and engineering support are important to all business - not just large enterprises. Our pricing model is based on resource utilization, rather than a predefined set of resource allocations that most providers offer.
+
+We're democratizing enterprise grade services for small to medium size businesses. At Savantly, we believe small to medium sized business should have enterprise grade services without the enterprise price tag.
+
+Contact us to get early access to the platform and help us shape the product with your needs. We're currently accepting partner applications.
+
+Ultimately, every business is different, and there's no one-size-fits-all solution. However, by taking a thoughtful and strategic approach to technology management, you can position your business for long-term success.
+
+
+
+---
+Jeremy Branham
+Apr 24, 2023 • 5 min read
+Custom Software Development: Why Building is Better Than Buying
+When it comes to software, businesses are often faced with the decision of whether to buy a pre-packaged solution or invest in custom software development. While packaged software may be suitable for statutory requirements, such as payroll or general ledger, it may not be the best choice for systems that support the core business. In this article, we’ll explore the reasons why custom software development may be the way to go for your business.
+
+I felt inspired to write this article after (re)reading the Apache Causeway documentation. The concepts are great for general development and not unique to Causeway - I'd recommend any software engineer or architect to peruse it.
+Dan Haywood and the rest of the Apache Causeway contributors are a great bunch. Over the last several years I've used Causeway (previously Isis) to prototype and build production applications.
+Article Reference:
+https://causeway.apache.org/userguide/2.0.0-RC1/fun/concepts-patterns.html#aligned-with-the-business
+
+Prepackaged Software and Big SAAS
+One of the main problems with packaged software is that it can do "too much" or "not enough." While it may have features that are not required by your business, it may also lack crucial functionality that your business needs. This can lead to end-users re-purposing unused fields to store information, which can result in a system that is difficult to learn and use, with degraded data quality.
+
+Another problem with packaged software is that it may not be customizable enough to meet your business needs. While some software may be customizable to a degree, there is always a limit to what can be customized. This can result in the business being forced to operate according to the way in which the software requires, which can be a disadvantage.
+
+Custom software development, on the other hand, allows businesses to build software that fits their specific needs. It provides the ability to create software that is tailored to the business's unique requirements, ensuring that it operates in the way that best suits the business. This can result in a system that is easier to learn and use, with higher-quality data.
+
+In addition to the advantages of customization, custom software development also provides businesses with more control over the software development process. While pre-packaged software is sold with a support package, the cover of which can vary greatly, custom software development allows businesses to have more influence over the direction of the development of the product. This can result in the creation of software with specific features that are missing from the pre-packaged solutions, providing a competitive advantage.
+
+Furthermore, if a business uses the same software as its competitors, there is no competitive advantage to be gained. However, if a business has well-crafted custom software, it can provide a significant competitive advantage.
+
+There are different types of custom applications that businesses can consider building. For example, a custom application can be developed for inventory management, customer relationship management, or enterprise resource planning. These applications can be tailored to the specific needs of the business, providing greater efficiency and cost savings.
+
+Embrace the "Genius of the AND" with Open Source
+“We try never to forget that medicine is for the people. It is not for the profits.” – George Merck
+
+"Instead of being oppressed by the “Tyranny of the OR,” highly visionary companies liberate themselves with the “Genius of the AND”—the ability to embrace both extremes of a number of dimensions at the same time. Instead of choosing between A OR B, they figure out a way to have both A AND B."
+
+Jim Collins - Concepts - Genius of the AND
+
+Genius of the AND
+
+The concept of the "genius of the AND" was introduced by Jim Collins and Jerry Porras in their book "Built to Last". It refers to the idea that great companies embrace both seemingly contradictory ideas and find a way to combine them in a synergistic way, rather than choosing between them.
+
+Open source software is a great example of the "genius of the AND" because it combines two seemingly contradictory ideas: collaboration and competition. On the one hand, open source software is built collaboratively, with developers from all over the world contributing their expertise to a shared codebase. This collaboration fosters a sense of community and mutual support among developers, and allows for rapid innovation and improvement.
+
+On the other hand, open source software is also highly competitive. Many open source projects are developed as alternatives to proprietary software products, and the open source community often views itself as a challenger to established software vendors. This competition fosters a spirit of innovation and drives developers to create better and more effective software solutions.
+
+By combining these two seemingly contradictory ideas, open source software has created a new paradigm for software development and collaboration. It has shown that collaboration and competition are not mutually exclusive, but rather can be combined in a way that benefits everyone involved.
+
+Open Source gives you benefits of building AND buying.
+Open source software is similar to building and buying software in that it can be used to address business needs and requirements. Like custom software development, open source software can be customized and modified to fit specific business needs. The source code of open source software is freely available, which means that developers can access, study, and modify it as needed. This provides a level of flexibility and control that is similar to building custom software.
+
+On the other hand, open source software is similar to buying software in that it is already developed and available for use. It can be downloaded and installed just like any other software product, without the need for extensive development or customization. This can be a cost-effective solution for businesses that don't have the resources or expertise to build custom software from scratch.
+
+One key difference between open source software and custom software development is that open source software is developed by a community of contributors rather than a single organization. This means that the development roadmap and feature set are largely determined by the community, rather than the specific needs of a business. However, many open source projects are highly customizable and can be adapted to fit specific business requirements.
+
+Savantly will help you build your custom solution
+If you're looking for software that fits your business needs exactly and gives you a competitive edge, then custom software development is the way to go. At our company, we specialize in building custom software solutions that meet our clients' specific needs, and we have the expertise and experience to deliver high-quality, reliable software that's tailored to your business. With custom software, you can streamline your operations, improve productivity, and gain a significant advantage over your competitors. So, if you're ready to take your business to the next level, we'd love the opportunity to build your custom software solution.
+
+
+
+---
+Jeremy Branham
+May 27, 2023 • 6 min read
+Why do you need a technology architect?
+Navigating technology is hard, even for seasoned professionals.
+
+I've got a passion for finding solutions for complex problems, particularly when it benefits someone or some group I'm invested in emotionally.
+It's difficult to know which technology is the correct choice, given each business has it's own nuances, and the options are are seemingly endless.
+Technology selection may seem like a simple research issue at first; and in some cases where the risk or consequence of failure is low, it may be an easier task.
+
+We'll assume in this article you have an interest in growing a business, and potentially have a vested interest in the business success.
+We'll also assume that your business uses software to manage data relevant to your business or customer's experience.
+I'd be surprised if these assumptions don't apply to most businesses.
+
+Where to start
+One problem with technology selection and solution engineering, is knowing where to start and what's available. With the quantity and speed at which new technology is released, there's usually a delay in the time it becomes available and the time we "discover" it.
+Search engines help with this - but many times, you need to first know what to search for. Or you might start with a general research and start narrowing down ideas, eventually delving into the deeper topics. This can consume hours, days, weeks, or even longer depending on how much information you need to make a decision. Staying up-to-date with new technology and trends is practically a full-time job. More so now that AI is rapidly evolving, pervasive, and tools are released more frequently.
+
+How do you know what to search for?
+How do you identify which technology to combine for a full solution?
+
+Spending a few minutes drawing a mind map of the general technology domain quickly becomes unmanageable in a 2 dimensional area, and would be better represented in a 3 dimensional graph. The image below, depicts a very high-level relationship between some concepts, and only exposes a small fraction of the domain considerations for a full business solution.
+
+
+Other questions we might ask when planning:
+
+Will the solution infrastructure scale?
+Does it scale financially with your growth?
+How long will this solution work - what's the likelihood of deprecation?
+What do the day 2 operations look like and how much does maintenance cost?
+Will you be locked in, or will it take significant work to migrate/upgrade?
+What does the security look like and can you delegate responsibilities safely?
+What options are available for integration?
+Any many more...
+
+LLMs may be the next evolutionary step in the research process, and I've been experimenting with this for research lately. Unfortunately, there are issues around hallucinations where the model may return a realistic answer although it may be wildly inaccurate. I suspect this will improve significantly over the next couple of years.
+
+If the problem space is so large and complex, how could anyone stay completely up-to-date?
+Maybe it's not possible - but some of us are obsessed with learning and experimentation, and I believe this is a common attribute of the best architects. Software projects and businesses fail for a variety of reasons, but in my experience, selecting the wrong technology or having a poor architecture can be at best costly, and at worst fatal to the business.
+
+Professional Geek
+Here's a little context of my background.
+
+I'm a maker at the core, whether it's music, art, food, software, or anything else that allows me to be creative and bring something new into the universe.
+
+I've been fascinated with computers since the 80's, and it would've been sooner had I been born earlier. Since then, I've been pumping my brain with technical documents, research, proof of concepts, etc...
+
+The first computer software I "wrote" was in the early 90's on an Amiga 500 using AmigaBASIC. I think I was in 6th grade, when I'd found a script in the back of a math book. Although I didn't care too much about learning algebra and turning homework assignments in, I suddenly found this schoolbook interesting.
+After carefully copying the code from my book into the Amiga, which was probably less than 100 lines, I executed the script and behold! There were a random number of stars printed on the screen, and I could play the game by entering a guess of the star count on the command line.
+
+Over the next 10 years or so, I experimented with other languages like Perl, VBA, and C. I started learning more about HTML and JavaScript. The inspiration for learning web development was firstly because I needed a page to recruit for my gaming clan (anyone remember Tribes?).
+Secondly, while doing tech support for Bell Atlantic DSL, I created a web page to organize all my favorite links. Other tech-support reps liked my "cheat-sheet" so I emailed it to them, and I was promoted to a mentor role to assist others.
+This may have been the first time I considered development as a way to make money, but I didn't know how. I also didn't know the term "knowledge delivery" and that I'd started a journey with that simple web page of links that would be a driver in my career.
+
+Geek tip -
+Take time to help your family and friends when they ask for help with their electronic devices, no matter how far you climb the tech-ladder.
+Open source in the enterprise
+Over the next decade, I'll just mention that I worked with many, many, different frameworks and languages, and eventually became the architect of a learning management system and a mission critical support platform for a large telecom enterprise. "Knowledge delivery" was at the core of these systems and I was fortunate to meet some of the leading engineers of search related technology at Lucene conventions, got to play with UIMA when IBM was developing Watson, and learned much about relevancy tuning and machine learning.
+My employer was great - giving me freedom to find problems and create solutions, with few directives from management.
+I found that I could have the job I wanted, by looking for the opportunities to use the tech I was interested in, and creating a proof of concept solution.
+It only worked some of the time, but I gained so much insight and experience by repeating the try/fail/try cycle, that I became very fast at exploring new ideas and technology. So that when it did work, the value was great.
+
+With this approach, I was able to deploy cutting edge solutions to introduce our development team to:
+- Low code tool development (EMF, Papyrus)
+- Package management (Maven, Artifactory)
+- Continuous integration and deployment automation (Jenkins)
+- Site reliability engineering (CollectD, Graphite, scripting, and later Grafana)
+
+We reduced our painful 3-5 hour deployment meetings with 10-20 people on a conference, to about 15 minutes with 3 people.
+
+This was circa 2010, so the technology landscape has changed drastically since.
+
+A changing landscape
+Today we use virtualization at multiple levels, containerization, and layers upon layers of automation to deploy full technology solutions.
+
+With the applications and tools available today, particularly in the open source space, a single person today can produce as much as an entire team did a few years ago, given the correct architecture and technology selections.
+I can confirm this from my own experience, and have architected, implemented, and supported digital infrastructures for companies at a fraction of the cost previously required.
+
+Horizontal/vertical autoscaling help reduce cost by only allocating resources when they're required.
+CICD reduces time/money for testing and deployments.
+Frameworks like Apache Causeway reduce time/money required to implement custom business functionality.
+Event driven designs and supporting frameworks / micro-saas enable flexible change, reducing total cost of ownership.
+
+For one of Savantly's clients - we architected and implemented an enterprise solution, including an oauth identity provider, data lakehouse and warehouse, ELT pipelines, a Spark cluster, a Kafka cluster, a custom core business application, reporting and analytics services, digital asset management, internal websites, and a public website that has spikes to 1 million hits in a day, for less than $3k/month avg in infrastructure - all owned by the client.
+If you look at enterprise level commercial SAAS offerings for that platform, you'll likely pay 3-5X the amount, and potentially much more for multi-site businesses.
+
+We can solve your technology woes
+If you need help navigating your cell phone, I encourage you to contact the geek in your family or social circle.  =D
+If you need help selecting technology for your business or architecting a solution, contact us to schedule an introduction!
+
+
+
+---
+Jeremy Branham
+May 29, 2023 • 3 min read
+Franchise Technology Partner
+
+I've learned much while working with a variety of businesses in different industries. Notably, I've developed software for companies in Telecom, Publishing, E-Commerce, Government, Construction, Crypto, Fashion, Legal, Manufacturing, and others over my career.
+
+Though, I've particularly enjoyed working with a restaurant franchise over the last several years.
+
+Having started my first W2 job as a dishwasher, and later being a server and a bartender before moving into the tech industry, I've always had an appreciation for the intricacies and operations of the restaurant industry.
+
+Working with the franchise operator revealed a unique set of challenges different from those encountered by businesses in other industries, or even the concerns of the restaurant staff. It's like a "business within a business".
+There are also many similarities for other enterprises I've supported. Such as a need for reliable and secure web applications, data processing/analytics, and flexible automation that adapts to the business needs.
+
+Some Restaurant Industry Specifics I've Learned
+One of the primary concerns for a restaurant franchise is maintaining consistency across multiple locations. Each franchise location must deliver the same quality of food, service, and overall experience to uphold the brand's reputation and meet customer expectations. This requires effective communication and training systems to ensure that employees at every location are well-versed in the franchise's standards and protocols.
+Balancing local market demands and preferences with the need for consistency presents another challenge. Each franchise location may adapt its menu, pricing, and promotional strategies to suit the local customer base while staying true to the brand identity. A restaurant franchise must navigate these unique problems to establish a strong brand presence, attract and retain customers, and ultimately thrive in a competitive industry.
+
+
+Growing Franchise IT Infrastructure
+I was fortunate to help a franchise design an enterprise grade architecture and implement thier IT infrastructure. They'd started from a single GoDaddy server, and brought me in as a consultant to help with scaling. After optimizing every bit of performance in the existing systems, we eventually migrated to a Kubernetes cluster with custom core business software, several open-source solutions, IAC automation, CICD, SRE principles, and a Data Lakehouse with ELT pipelines. It's been exciting to participate as they moved from startup / SMB to being purchased by a large multi-brand organization.
+
+I'm confident we saved hundreds of thousands of dollars, if not more, by leveraging open-source and custom software. Today they have license-free customizable processes, that can be updated rapidly through CICD.
+Saving the franchise operator from high SAAS costs has also saved the franchise owners from additional pass-through costs.
+
+I've also worked with a franchise in the construction industry where there are similar concerns of managing a multi-brand / multi-site organization.
+
+Franchise Support
+The Franchise Operator and Owner have similar needs such as email system management, reporting and analytic services, and potentially localized content.
+
+At Savantly, we understand the unique challenges faced by franchise operators and owners in today's dynamic business landscape. That's why we are committed to providing comprehensive and tailored technology solutions that empower you to optimize operations, enhance efficiency, and drive sustainable growth for your franchise.
+
+As a trusted industry leader, we specialize in delivering top-notch custom software and managed services specifically designed for the franchise sector. Our team of seasoned experts combines deep domain knowledge with cutting-edge technological expertise to create innovative solutions that cater to your unique business needs.
+
+Custom Solutions
+Our custom software solutions are built from the ground up, taking into account the specific requirements and intricacies of your franchise model. Whether you need a robust franchise management system, a streamlined point-of-sale solution, or a powerful reporting and analytics platform, we have you covered. Our software solutions are scalable, intuitive, and fully customizable, ensuring seamless integration with your existing infrastructure and processes.
+
+Managed Services
+In addition to our software offerings, we provide comprehensive managed services to support you every step of the way. Our dedicated team of professionals takes care of all the technical aspects, including software maintenance, updates, security, and performance monitoring, allowing you to focus on what matters most—growing your franchise business. With our managed services, you can rest assured that your technology ecosystem is in capable hands, ensuring maximum uptime and uninterrupted operations.
+
+Partner with us
+When you partner with Savantly, you gain a strategic advantage in the competitive franchise landscape. Our commitment to excellence extends beyond technology—we strive to foster long-term partnerships based on trust, reliability, and exceptional customer service. Our team takes the time to understand your unique goals, challenges, and aspirations, enabling us to deliver solutions that truly make a difference.
+
+Ready to take your franchise operations to new heights? Contact Savantly today to schedule a consultation. Let us empower your franchise business with tailor-made software solutions and expert managed services, so you can focus on what you do best—building a thriving franchise empire.
+
+
+
+---
+Jeremy Branham
+Aug 3, 2023 • 2 min read
+Human Skills for Programming: Pattern Recognition
+As I work with and mentor engineers and architects, there's one essential skill I see in the folks that tend to produce the greatest work.
+They recognize patterns that can allow refactoring to simplify and reduce the amount of code required to produce quality results.
+
+It's not critical that we create generalized functions for everything, but being able to recognize and create patterns will improve your overall abilities.
+
+Here are some ways you can improve your pattern recognition skills to enhance your coding skills:
+
+Identify Reusable Code Patterns
+Look for recurring patterns in your code or in existing libraries and frameworks. Recognizing these patterns will help you write more concise and efficient code. For instance, you might find common design patterns like Singleton, Observer, Factory, etc. Once you identify these patterns, you can apply them in appropriate situations.
+
+Learn from Others' Code
+Study well-written and open-source code. Observe how experienced developers structure their code, handle edge cases, and apply design patterns. Identifying patterns in others' code will help you incorporate those practices into your own projects.
+
+Spot Bug Patterns
+Analyze your own code for recurring bugs or errors. If you notice common patterns in your mistakes, you can develop a checklist to avoid those issues in the future. This will enhance the reliability and stability of your code.
+
+Think in Abstractions
+Identify abstract concepts that apply across different programming languages and paradigms. Understanding abstractions will help you write more flexible, scalable, and maintainable code.
+
+Practice Pattern Recognition Puzzles
+Engage in coding challenges and puzzles that encourage pattern recognition skills. Platforms like LeetCode, HackerRank, and Codeforces offer a variety of coding problems that require pattern identification to solve efficiently.
+
+Apply Design Patterns
+Learn and apply common design patterns in your coding projects. Design patterns provide proven solutions to recurring software design problems. Familiarity with design patterns will make your code more structured and easier to maintain.
+
+Stay Curious and Experiment
+Keep an open mind and continuously explore new programming concepts, languages, and paradigms. Experimenting with different techniques will expose you to various patterns and improve your coding versatility.
+
+Collaborate and Review Code
+Engage with other developers, participate in code reviews, and discuss coding approaches. Exposure to different coding styles and practices will enhance your pattern recognition skills.
+
+Furthering Your Skills
+Master Algorithmic Patterns
+Recognize common algorithms and data structures, such as sorting algorithms, tree traversal, dynamic programming, and graph algorithms. Understanding these patterns will enable you to choose the most appropriate algorithm for specific programming tasks, leading to more efficient and optimized solutions.
+
+Analyze Performance Patterns
+Recognize performance bottlenecks and inefficiencies in your code. This could involve identifying loops that run too many times, redundant computations, or memory leaks. Being able to identify these patterns will aid in improving the overall performance of your applications.
+
+Remember that pattern recognition skills improve with experience and practice. The more you code and analyze different patterns, the better equipped you'll be to write clean, efficient, and robust code.
+
+
+
+---
+Jeremy Branham
+Aug 7, 2023 • 3 min read
+Streamlining Kubernetes Deployments with Docker, Helm, Terraform, and Terragrunt
+
+Maintaining a scalable, flexible, and easily deployable infrastructure is crucial. Kubernetes has emerged as a leading container orchestration platform, while Docker has become the de facto standard for containerization.
+
+To manage and simplify the deployment process, many developers and DevOps engineers have turned to Helm for packaging applications, Terraform for infrastructure provisioning, and Terragrunt for orchestrating Terraform configurations.
+In this blog post, we will explore how this powerful combination of tools enables a seamless and streamlined deployment workflow, and how you may be under-utilizing Terraform.
+
+Key Components
+Docker: Encapsulating Application Code for Portability
+Docker containers have revolutionized software development by encapsulating applications, libraries, and dependencies in a consistent and portable environment. With Docker, you can package your project's application code and all its dependencies into a single, lightweight image. This image can be easily shared, version-controlled, and deployed across different environments without worrying about variations in the underlying infrastructure. (excluding platform arch considerations)
+
+By leveraging Docker images, we can reduce the infamous "it works on my machine" problem. This consistency is especially valuable when deploying applications to Kubernetes clusters, as it eliminates the need to deal with subtle environment differences that could lead to production issues.
+
+Helm Charts: Simplified Kubernetes Deployments
+Kubernetes offers a robust and scalable platform for managing containerized applications, but its YAML manifests can be verbose and complex.
+Helm, essentially a package manager for Kubernetes, simplifies the deployment process by providing a templating engine and a collection of pre-configured packages called "charts." These charts define the resources needed to run an application in Kubernetes, including deployments, services, and configuration files.
+
+With Helm charts, developers can easily define, version, and manage complex Kubernetes deployments as code. The templating engine allows for parameterization, enabling the reuse of chart configurations with different values for each environment (e.g., development, staging, production). This abstraction helps standardize the deployment process and reduces the chances of human errors when deploying complex applications.
+
+Q: How do we manage dependencies across charts? What kind of manual steps are there when the charts depend on externally created or attached resources?
+
+Terraform: Declarative Kubernetes Configurations
+While Docker and Helm handle application packaging and Kubernetes deployments, managing the underlying infrastructure can be challenging. Terraform, an Infrastructure as Code (IaC) tool, bridges this gap by providing a declarative way to define, provision, and manage infrastructure resources.
+
+With Terraform's Kubernetes provider, developers can create Kubernetes resources like namespaces, services, and secrets as code. This approach ensures that the infrastructure setup is repeatable, version-controlled, and easily shareable across teams. Additionally, by maintaining the state of the infrastructure, Terraform can automatically manage updates and ensure that the desired state matches the actual state.
+
+Bonus - using the Helm Terraform provider, we can explicitly wire up dependencies between terraform resources, so that the output of a Terraform module can be used as an input to a Helm chart.
+
+Terragrunt: Orchestrating Terraform Configurations
+As infrastructure grows in complexity, managing multiple Terraform configurations across different environments becomes challenging. Terragrunt, an open-source tool, acts as a thin wrapper around Terraform, enabling configuration reuse and better orchestration.
+
+Terragrunt allows developers to follow the Don't Repeat Yourself (DRY) principle by sharing common Terraform configurations across different environments. With Terragrunt's ability to manage dependencies and inheritance, teams can maintain a clear and organized codebase while ensuring consistency and reducing errors.
+
+Seamless Deployment Workflow
+Now that we've explored the individual components of our deployment workflow, let's see how they fit together to achieve a seamless and efficient deployment process.
+
+Step 1: Dockerize the Application
+Develop and package the application code and its dependencies into a Docker image.
+Test the image locally to ensure it runs as expected.
+
+Step 2: Helm Chart Creation
+Create a Helm chart that describes the Kubernetes resources required to deploy the application.
+Utilize templating to parameterize the chart for different environments.
+
+Step 3: Terraform for Infrastructure Provisioning
+Use Terraform to provision the necessary Kubernetes infrastructure, such as namespaces, ingress controllers, and service accounts.
+Wrap your Helm chart in a Terraform module so it can be re-used from other Terraform code.
+Maintain the Terraform state to track the infrastructure's status.
+
+Step 4: Terragrunt Orchestration
+Employ Terragrunt to orchestrate the deployment workflow and manage dependencies between different Terraform configurations/modules.
+Setup a hierarchical configuration so the configurations are DRY and we can ensure consistency across environments.
+Conclusion
+The combination of Docker, Helm, Terraform, and Terragrunt empowers teams to deploy complex applications to Kubernetes in a streamlined, declarative, and consistent manner. Docker images encapsulate the application code and its dependencies, making deployments portable and reliable. Helm charts simplify Kubernetes deployments by providing reusable and versioned templates. Terraform offers a declarative approach to provisioning Kubernetes infrastructure. Finally, Terragrunt orchestrates the entire process, ensuring consistency and DRY configurations across environments.
+
+By adopting this powerful deployment workflow, development teams can reduce the operational overhead, improve collaboration, and confidently deploy applications across various Kubernetes environments with ease.
+

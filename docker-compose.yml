@@ -1,0 +1,59 @@
+version: '3.0'
+services:
+
+  webapp:
+    image: eclipse-temurin:17-jdk
+    command: ./gradlew bootRun
+    working_dir: /app
+    volumes:
+      - "./:/app"
+    ports:
+      - 8080:8080
+    env_file:
+      - .env
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: ${OAUTH2_ISSUER}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      OPENAI_ENABLED: ${OPENAI_ENABLED:-false}
+      APP_SECURITY_ENABLED: ${APP_SECURITY_ENABLED:-true}
+      REPLICATE_APITOKEN: ${REPLICATE_APITOKEN}
+      LOGGING_LEVEL_NET_SAVANTLY_MAINBOT: ${LOGGING_LEVEL:-DEBUG}
+      LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY: ${LOGGING_LEVEL:-DEBUG}
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  oauth2-proxy:
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.2.1
+    command: >
+      --http-address="0.0.0.0:4180" 
+      --provider oidc 
+      --provider-display-name "Mainbot Local" 
+      --email-domain "*" 
+      --upstream="http://webapp:8080" 
+      --redirect-url="http://localhost:4180/oauth2/callback" 
+      --cookie-secret="${OAUTH2_COOKIE_SECRET}" 
+      --cookie-refresh="10m"
+      --client-id="${OAUTH2_CLIENT_ID}" 
+      --client-secret="${OAUTH2_CLIENT_SECRET}" 
+      --oidc-issuer-url="${OAUTH2_ISSUER}"
+      --pass-access-token=true
+    hostname: oauth2-proxy
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - webapp
+    ports:
+      - 4180:4180

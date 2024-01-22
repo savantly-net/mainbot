@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    password: ''
+    username: sa
+    url: jdbc:h2:mem:testdb
+  jpa:
+    properties:
+      hibernate:
+        use_sql_comments: 'true'
+        format_sql: 'true'
+        type: info
+    hibernate:
+      ddl-auto: update
+    show-sql: 'false'
+    database-platform: org.hibernate.dialect.H2Dialect
+  resources:
+    chain:
+      cache: 'false'
+logging:
+  level:
+    dev:
+      langchain4j: DEBUG
+      ai4j:
+        openai4j:
+          RequestLoggingInterceptor: DEBUG
+          ResponseLoggingInterceptor: DEBUG
+    root: INFO
+    net:
+      savantly: INFO
+      savantly.app.config: DEBUG
+    org.springframework.security.messaging: DEBUG
+    org.springframework.web.socket.server: DEBUG
+app:
+  security:
+    enabled: 'false'
+
+openai:
+  chat-model-id: gpt-3.5-turbo
+#  chat-model-id: gpt-4-1106-preview
+
+server:
+  error:
+    includeMessage: on-param
+
+pinecone:
+  api-key: ${PINECONE_API_KEY}
+  index: ${PINECONE_INDEX}
+  environment: ${PINECONE_ENVIRONMENT}
+  project-name: ${PINECONE_PROJECT_NAME}
