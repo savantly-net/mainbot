@@ -47,6 +47,7 @@ public class ChatSession {
         playerSession.addMemory(playerSessionMemory);
 
         return new ChatResponseDto()
+                .setCreated(playerSessionMemory.getCreated())
                 .setUserMessage(userInput)
                 .setAiMessage(aiMessage.getAiMessage());
     }

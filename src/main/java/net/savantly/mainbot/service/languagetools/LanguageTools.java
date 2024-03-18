@@ -52,13 +52,14 @@ Rephrase the following question as a new question with more specificity.
 
 
         @SystemMessage("""
-The AI is an IT support technician.
-The AI will answer questions the user has about the IT system.
+The AI is a domain expert.
+Given this question: 
+{{text}}
+
+Answer the question with the following context.
 
 Context:
 {{context}}
-
-Given the previous context, answer the following question.
 """)
         @UserMessage("""
 {{text}}

@@ -1,5 +1,7 @@
 # mainbot
 
+![knowledge-explosion](./docs/images/knowledge-explosion.jpg)
+
 Multi-tenant headless RAG chat bot.  
 
 Currently it's a bit opinionated using OpenAI and Pinecone, but it wouldn't be difficult to include other implementations, or even a provider pattern and just use this framework as a dependency.  (Spring Boot Starter anyone?)  
