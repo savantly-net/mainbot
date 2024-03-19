@@ -34,6 +34,12 @@ logging:
 app:
   security:
     enabled: 'false'
+    preauth:
+      enabled: 'false'
+      user-id-header-name: x-forwarded-user
+      username-header-name: x-forwarded-preferred-username
+      groups-header-name: x-forwarded-groups
+      email-header-name: x-forwarded-email
 
 openai:
   chat-model-id: gpt-3.5-turbo

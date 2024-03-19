@@ -16,6 +16,9 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.savantly.mainbot.dom.appuser.AppUsers;
 
+/**
+ * This class represents a configuration class that is used to configure the security of the application.
+ */
 @Slf4j
 @EnableWebSecurity
 @ConfigurationProperties(prefix = "app.security")
@@ -40,6 +43,9 @@ public class SecurityConfig {
 
 	@Setter
 	private String authorityPrefix = "ROLE_";
+
+	@Setter
+	private PreAuthConfigProperties preauth;
 
 	@Bean
 	public LoginSuccessListener loginSuccessListener(AppUsers playerService) {
@@ -82,6 +88,9 @@ public class SecurityConfig {
 					.anyRequest().authenticated())
 					.oauth2ResourceServer(oauth2 -> oauth2.bearerTokenResolver(bearerTokenResolver())
 							.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
+			if (preauth.isEnabled()) {
+				http.addFilter(new PreAuthFilter(preauth));
+			}
 		} else {
 			http.authorizeHttpRequests(authz -> authz.requestMatchers("/**").permitAll());
 		}

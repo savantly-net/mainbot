@@ -26,6 +26,15 @@ public class UserContext {
     }
 
     var principal = authentication.getPrincipal();
+
+    if (principal == null) {
+      return Optional.of(anonymousUser.toDto());
+    }
+
+    if (principal instanceof UserDto) {
+      return Optional.of((UserDto) principal);
+    }
+
     if (principal instanceof String) {
       return Optional.of(anonymousUser.toDto());
     }
