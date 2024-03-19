@@ -2,6 +2,7 @@ package net.savantly.mainbot.dom.chatmessage;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -18,4 +19,16 @@ public class ResponseMessageDocRef {
     private String namespace;
     private String url;
     private double score;
+
+    @Transient
+    public ResponseMessageDocRefDto toDto() {
+        return new ResponseMessageDocRefDto()
+            .setId(this.getId())
+            .setResponseId(this.getResponseId())
+            .setDocId(this.getDocId())
+            .setType(this.getType())
+            .setNamespace(this.getNamespace())
+            .setUrl(this.getUrl())
+            .setScore(this.getScore());
+    }
 }

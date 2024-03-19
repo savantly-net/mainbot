@@ -10,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Transient;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import net.savantly.mainbot.dom.chatmessage.AiResponseMessage;
@@ -19,13 +20,12 @@ import net.savantly.mainbot.dom.userchatsession.UserChatSession;
 @Accessors(chain = true)
 @Entity
 public class UserChatSessionMemory {
-    
+
     @Id
     private String id;
     private ZonedDateTime created = ZonedDateTime.now();
     private String userSessionId;
     private String userId;
-
 
     @Enumerated(EnumType.STRING)
     private UserChatSessionMemoryState state = UserChatSessionMemoryState.IN_PROGRESS;
@@ -36,23 +36,40 @@ public class UserChatSessionMemory {
     @Column(length = 4096)
     private String generatedPrompt;
 
-    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     private AiResponseMessage systemResponse;
 
     @Column(length = 4096)
     private String systemResponseSummary;
 
-
-    private UserChatSessionMemory() {}
+    private UserChatSessionMemory() {
+    }
 
     public static UserChatSessionMemory create(
-        String requestId, 
-        UserChatSession userSession, String userInput, AiResponseMessage systemResponse) {
+            String requestId,
+            UserChatSession userSession, String userInput, AiResponseMessage systemResponse) {
         return new UserChatSessionMemory()
-            .setId(requestId)
-            .setUserInput(userInput)
-            .setSystemResponse(systemResponse)
-            .setUserId(userSession.getUser().getId())
-            .setUserSessionId(userSession.getId());
+                .setId(requestId)
+                .setUserInput(userInput)
+                .setSystemResponse(systemResponse)
+                .setUserId(userSession.getUser().getId())
+                .setUserSessionId(userSession.getId());
+    }
+
+    @Transient
+    public UserChatSessionMemoryDto toDto() {
+        var dto = new UserChatSessionMemoryDto()
+                .setId(this.getId())
+                .setCreated(this.getCreated())
+                .setUserSessionId(this.getUserSessionId())
+                .setUserId(this.getUserId())
+                .setState(this.getState())
+                .setUserInput(this.getUserInput())
+                .setSystemResponseSummary(this.getSystemResponseSummary());
+
+        if (this.getSystemResponse() != null) {
+            return dto.setSystemResponse(this.getSystemResponse().toDto());
+        }
+        return dto;
     }
 }

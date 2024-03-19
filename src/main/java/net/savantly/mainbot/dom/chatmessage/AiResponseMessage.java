@@ -29,4 +29,13 @@ public class AiResponseMessage {
 
     @Transient
     private List<ResponseMessageDocRef> docRefs = new ArrayList<>();
+
+    @Transient
+    public AiResponseMessageDto toDto() {
+        AiResponseMessageDto dto = new AiResponseMessageDto()
+            .setId(this.getId())
+            .setAiMessage(this.getAiMessage());
+        this.getDocRefs().forEach(docRef -> dto.addDocRef(docRef.toDto()));
+        return dto;
+    }
 }

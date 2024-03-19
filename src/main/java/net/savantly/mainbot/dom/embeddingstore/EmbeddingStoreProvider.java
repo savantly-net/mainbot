@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.store.embedding.EmbeddingStore;
+import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 import dev.langchain4j.store.embedding.pinecone.PineconeEmbeddingStore;
 import lombok.RequiredArgsConstructor;
 import net.savantly.mainbot.config.PineconeConfig;
@@ -33,6 +34,11 @@ public class EmbeddingStoreProvider {
     }
 
     private EmbeddingStore<TextSegment> create(String id) {
+
+        if (!pineconeConfig.isEnabled()) {
+            return new InMemoryEmbeddingStore<>();
+        }
+
         PineconeEmbeddingStore pinecone = PineconeEmbeddingStore.builder()
                 .apiKey(pineconeConfig.getApiKey()) // https://app.pinecone.io/organizations/xxx/projects/yyy:zzz/keys
                 .environment(pineconeConfig.getEnvironment())

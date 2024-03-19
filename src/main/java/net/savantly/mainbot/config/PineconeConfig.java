@@ -11,6 +11,7 @@ import lombok.Setter;
 @Getter @Setter
 public class PineconeConfig {
     
+    private boolean enabled = true;
     private String apiKey;
     private String environment = "us-east4-gcp";
     private String projectName;

@@ -1,4 +1,4 @@
-package net.savantly.wanderling.service.replicate;
+package net.savantly.mainbot.service.replicate;
 
 import java.util.Optional;
 

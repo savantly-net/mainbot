@@ -1,4 +1,4 @@
-package net.savantly.wanderling.service;
+package net.savantly.mainbot.service;
 
 import java.util.UUID;
 

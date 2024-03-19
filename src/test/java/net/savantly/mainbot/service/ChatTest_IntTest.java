@@ -1,4 +1,4 @@
-package net.savantly.wanderling.service;
+package net.savantly.mainbot.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

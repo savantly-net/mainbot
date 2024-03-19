@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Optional;
 
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
@@ -67,5 +68,13 @@ public class UserChatSession {
 
     public String getUserId() {
         return user.getId();
+    }
+
+    public UserChatSessionDto toDto() {
+        return new UserChatSessionDto()
+            .setId(this.getId())
+            .setUser(this.getUser().toDto())
+            .setNamespace(this.getNamespace())
+            .setMemories(this.getMemories().stream().map(UserChatSessionMemory::toDto).toList());
     }
 }

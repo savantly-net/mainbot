@@ -1,4 +1,4 @@
-package net.savantly.wanderling;
+package net.savantly.mainbot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

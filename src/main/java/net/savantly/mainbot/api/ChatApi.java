@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import net.savantly.mainbot.dom.chatmessage.ChatRequestDto;
 import net.savantly.mainbot.dom.chatmessage.ChatResponseDto;
 import net.savantly.mainbot.dom.chatsession.ChatSession;
-import net.savantly.mainbot.dom.userchatsession.UserChatSession;
+import net.savantly.mainbot.dom.userchatsession.UserChatSessionDto;
 import net.savantly.mainbot.dom.userchatsession.UserChatSessions;
 import net.savantly.mainbot.identity.UserContext;
 
@@ -24,9 +24,10 @@ public class ChatApi {
     final UserContext userContext;
 
     @PostMapping("/start")
-    public UserChatSession start() {
+    public UserChatSessionDto start() {
         var currentUser = userContext.getCurrentUser().orElseThrow();
-        return userChatSessions.create(currentUser);
+        var chatSession = userChatSessions.create(currentUser);
+        return chatSession.toDto();
     }
 
     @PostMapping("/session")
