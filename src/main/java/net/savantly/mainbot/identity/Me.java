@@ -21,6 +21,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * This class represents a controller that is used to handle requests related to the current user.
+ 
+ */
 @Controller
 @RequestMapping("/api/me")
 @RequiredArgsConstructor
@@ -31,6 +35,13 @@ public class Me {
 	private final UserContext userContext;
 	private final ApplicationEventPublisher applicationEventPublisher;
 
+	/**
+	 * This method is used to get the current user's authorization.
+	 * 
+	 * @param jwt the jwt injected by the security context
+	 * @param request the http request
+	 * @return the authorization
+	 */
 	@GetMapping
 	@ResponseBody
 	public UserDto getAuthorization(@AuthenticationPrincipal Jwt jwt, HttpServletRequest request) {

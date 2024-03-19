@@ -15,6 +15,10 @@ import org.springframework.security.oauth2.server.resource.web.BearerTokenResolv
 
 import jakarta.servlet.http.HttpServletRequest;
 
+/**
+ * This class represents a proxy bearer token resolver that implements the BearerTokenResolver interface.
+ * It is responsible for resolving the bearer token from the request headers and request parameters.
+ */
 public final class ProxyBearerTokenResolver implements BearerTokenResolver {
 
 	private static final Logger log = LoggerFactory.getLogger(ProxyBearerTokenResolver.class);

@@ -8,6 +8,10 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+/**
+ * This class represents a user DTO.
+ * It contains the user's information.
+ */
 @Getter
 @Setter
 @Accessors(chain = true)

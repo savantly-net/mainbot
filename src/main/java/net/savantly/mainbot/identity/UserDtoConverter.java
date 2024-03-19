@@ -4,6 +4,10 @@ import org.springframework.security.oauth2.jwt.Jwt;
 
 import lombok.Builder;
 
+/**
+ * This class represents a converter that converts a JWT token to a user DTO.
+
+ */
 @Builder
 public class UserDtoConverter {
 

@@ -4,6 +4,10 @@ import org.springframework.context.ApplicationEvent;
 
 import lombok.Getter;
 
+/**
+ * This class represents an event that is published when a user is authorized.
+ * It contains the user DTO of the authorized user.
+ */
 @Getter
 public class MeAuthorizedEvent extends ApplicationEvent {
 

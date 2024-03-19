@@ -5,6 +5,10 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+/**
+ * This class represents a user summary DTO.
+ * It contains the user's summary information.
+ */
 @Getter
 @Setter
 @Accessors(chain = true)
