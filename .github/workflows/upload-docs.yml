@@ -1,0 +1,25 @@
+name: Upload Files to Mainbot
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - 'README.md'
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Upload Files
+        uses: savantly-net/mainbot-github-action@1.0.0
+        with:
+          glob-pattern: '*.md'  # Set your file pattern here
+          namespace: '/admin'
+          api-url: 'https://mainbot.savantly.net/api/document/add'
+          client-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
