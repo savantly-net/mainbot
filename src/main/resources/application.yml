@@ -41,6 +41,28 @@ app:
       groups-header-name: x-forwarded-groups
       email-header-name: x-forwarded-email
 
+chat:
+  session:
+    config:
+      max-doc-results: 5
+      min-doc-score: 0.5
+      rephrase-enabled: 'true'
+      rephrase-question: |
+        Given the previous messages:
+        ---
+        {{messages}}
+        ---
+        
+        Rephrase the following question as a new question with more specificity. 
+        {{question}}
+      answer-question: |
+        The AI is a domain expert.
+        Given this question:
+        {{question}}
+        
+        Answer the question with the following context.
+        {{context}}
+
 openai:
   chat-model-id: gpt-3.5-turbo
 #  chat-model-id: gpt-4-1106-preview

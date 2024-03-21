@@ -61,9 +61,10 @@ Answer the question with the following context.
 Context:
 {{context}}
 """)
-        @UserMessage("""
-{{text}}
-""")
         String answerQuestionWithContext(@V("context") List<String> context, @V("text") String text);
+
+
+        @SystemMessage("{{prompt}}")
+        String completion(@V("text") String prompt);
                         
 }
