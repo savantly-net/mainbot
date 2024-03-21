@@ -50,6 +50,7 @@ server:
     includeMessage: on-param
 
 pinecone:
+  enabled: ${PINECONE_ENABLED:-false}
   api-key: ${PINECONE_API_KEY}
   index: ${PINECONE_INDEX}
   environment: ${PINECONE_ENVIRONMENT}
