@@ -24,4 +24,4 @@ jobs:
           api-url: 'https://backstage-mainbot.savantly.apps.savantly.cloud/api/document/add'
           client-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
-          token-url: https://oidc.apps.savantly.cloud/realms/savantly/protocol/openid-connect/token
+          token-endpoint: https://oidc.apps.savantly.cloud/realms/savantly/protocol/openid-connect/token
