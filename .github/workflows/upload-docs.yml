@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Upload Files
-        uses: savantly-net/mainbot-github-action@1.0.6
+        uses: savantly-net/mainbot-github-action@main
         with:
           glob-patterns: '*.md'  # Set your file pattern here
           namespace: '/admin'
