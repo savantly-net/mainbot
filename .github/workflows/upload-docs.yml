@@ -1,6 +1,7 @@
 name: Upload Files to Mainbot
 
 on:
+  workflow_dispatch: {} # Manually trigger the workflow
   push:
     branches:
       - main
