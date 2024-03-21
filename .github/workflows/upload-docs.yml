@@ -21,6 +21,6 @@ jobs:
         with:
           glob-patterns: '*.md'  # Set your file pattern here
           namespace: '/admin'
-          api-url: 'https://mainbot.savantly.net/api/document/add'
+          api-url: 'https://backstage-mainbot.savantly.apps.savantly.cloud/api/document/add'
           client-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
