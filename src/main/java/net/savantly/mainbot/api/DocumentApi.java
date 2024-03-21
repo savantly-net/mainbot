@@ -12,6 +12,7 @@ import dev.langchain4j.data.document.Document;
 import dev.langchain4j.data.document.Metadata;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.savantly.mainbot.config.AuthorizationConfig;
 import net.savantly.mainbot.dom.documents.DocumentAdd;
 import net.savantly.mainbot.dom.documents.DocumentService;
 import net.savantly.mainbot.identity.UserContext;
@@ -23,9 +24,9 @@ import net.savantly.mainbot.identity.UserDto;
 @RequestMapping("/api/document")
 public class DocumentApi {
 
+    private final AuthorizationConfig authorizationConfig;
     private final DocumentService documentService;
     private final UserContext userContext;
-
 
     @PostMapping("/add")
     public ResponseEntity<List<String>> addDocument(@RequestBody DocumentAdd document) {
@@ -39,10 +40,9 @@ public class DocumentApi {
         return ResponseEntity.ok(documentService.addDocument(doc, document.getNamespace()));
     }
 
-
     private boolean isUnauthorized(UserDto currentUser, DocumentAdd document) {
         log.info("checking authorization for user: {}", currentUser);
-        if (currentUser.getGroups().contains("admin")) {
+        if (currentUser.getGroups().contains(authorizationConfig.getAdminGroup())) {
             return false;
         }
         if (currentUser.getGroups().contains(document.getNamespace())) {
@@ -51,5 +51,4 @@ public class DocumentApi {
         return true;
     }
 
-    
 }
