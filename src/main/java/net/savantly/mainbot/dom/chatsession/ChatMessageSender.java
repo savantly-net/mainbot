@@ -45,6 +45,7 @@ public class ChatMessageSender {
             return new ResponseMessageDocRef()
                     .setDocId(d.getEmbeddingId())
                     .setNamespace(userChatSession.getNamespace())
+                    .setMetadata(d.getMetadata())
                     .setScore(d.getScore());
         }).toList();
 

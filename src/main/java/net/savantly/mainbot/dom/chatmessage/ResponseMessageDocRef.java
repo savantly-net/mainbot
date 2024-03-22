@@ -1,5 +1,8 @@
 package net.savantly.mainbot.dom.chatmessage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
@@ -21,6 +24,9 @@ public class ResponseMessageDocRef {
     private double score;
 
     @Transient
+    public Map<String, String> metadata = new HashMap<>();
+
+    @Transient
     public ResponseMessageDocRefDto toDto() {
         return new ResponseMessageDocRefDto()
             .setId(this.getId())
@@ -29,6 +35,7 @@ public class ResponseMessageDocRef {
             .setType(this.getType())
             .setNamespace(this.getNamespace())
             .setUrl(this.getUrl())
-            .setScore(this.getScore());
+            .setScore(this.getScore())
+            .setMetadata(this.getMetadata());
     }
 }

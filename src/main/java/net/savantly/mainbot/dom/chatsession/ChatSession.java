@@ -49,6 +49,7 @@ public class ChatSession {
         return new ChatResponseDto()
                 .setCreated(playerSessionMemory.getCreated())
                 .setUserMessage(userInput)
+                .setDocRefs(aiMessage.getDocRefs().stream().map(d -> d.toDto()).toList())
                 .setAiMessage(aiMessage.getAiMessage());
     }
 
