@@ -65,6 +65,6 @@ Context:
 
 
         @SystemMessage("{{prompt}}")
-        String completion(@V("text") String prompt);
+        String completion(@V("prompt") String prompt);
                         
 }

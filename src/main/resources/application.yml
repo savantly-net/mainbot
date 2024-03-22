@@ -46,22 +46,23 @@ chat:
     config:
       max-doc-results: 5
       min-doc-score: 0.5
-      rephrase-enabled: 'true'
-      rephrase-question: |
-        Given the previous messages:
-        ---
-        {{messages}}
-        ---
-        
-        Rephrase the following question as a new question with more specificity. 
-        {{question}}
-      answer-question: |
-        The AI is a domain expert.
-        Given this question:
-        {{question}}
-        
-        Answer the question with the following context.
-        {{context}}
+      prompts:
+        rephrase-enabled: 'true'
+        rephrase-question: |
+          Given the previous messages:
+          ---
+          {{messages}}
+          ---
+          
+          Rephrase the following question as a new question with more specificity. 
+          {{question}}
+        answer-question: |
+          The AI is a domain expert.
+          Given this question:
+          {{question}}
+          
+          Answer the question with the following context.
+          {{context}}
 
 openai:
   chat-model-id: gpt-3.5-turbo
@@ -72,7 +73,7 @@ server:
     includeMessage: on-param
 
 pinecone:
-  enabled: ${PINECONE_ENABLED:-false}
+  enabled: ${PINECONE_ENABLED:false}
   api-key: ${PINECONE_API_KEY}
   index: ${PINECONE_INDEX}
   environment: ${PINECONE_ENVIRONMENT}
