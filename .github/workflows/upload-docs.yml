@@ -22,6 +22,6 @@ jobs:
           glob-patterns: '*.md'  # Set your file pattern here
           namespace: '/admin'
           api-url: 'https://backstage-mainbot.savantly.apps.savantly.cloud'
-          client-id: ${{ secrets.CLIENT_ID }}
-          client-secret: ${{ secrets.CLIENT_SECRET }}
+          client-id: ${{ secrets.MAINBOT_CLIENT_ID }}
+          client-secret: ${{ secrets.MAINBOT_CLIENT_SECRET }}
           token-endpoint: https://oidc.apps.savantly.cloud/realms/savantly/protocol/openid-connect/token
