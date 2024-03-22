@@ -44,4 +44,14 @@ public class UserChatSessionMemoriesInMemory implements UserChatSessionMemories 
         return memories.values().stream().flatMap(List::stream).filter(m -> m.getId().equals(id)).findFirst().orElseThrow();
     }
 
+    @Override
+    public List<UserChatSessionMemoryProjection> getLatestMemoryForEachSessionByUserId(String userId) {
+        var latestMemories = new ArrayList<UserChatSessionMemoryProjection>();
+        memories.values().forEach(memories -> {
+            var latest = memories.get(memories.size() - 1);
+            latestMemories.add(new UserChatSessionMemoryProjection(latest));
+        });
+        return latestMemories;
+    }
+
 }

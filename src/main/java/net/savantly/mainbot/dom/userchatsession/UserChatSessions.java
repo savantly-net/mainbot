@@ -47,4 +47,5 @@ public class UserChatSessions {
     public List<UserChatSession> getByUserId(String userId) {
         return repository.findByUserId(userId);
     }
+
 }

@@ -1,6 +1,10 @@
 package net.savantly.mainbot.api;
 
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +16,8 @@ import net.savantly.mainbot.dom.chatmessage.ChatResponseDto;
 import net.savantly.mainbot.dom.chatsession.ChatSession;
 import net.savantly.mainbot.dom.userchatsession.UserChatSessionDto;
 import net.savantly.mainbot.dom.userchatsession.UserChatSessions;
+import net.savantly.mainbot.dom.userchatsessionmemory.UserChatSessionMemories;
+import net.savantly.mainbot.dom.userchatsessionmemory.UserChatSessionMemoryProjection;
 import net.savantly.mainbot.identity.UserContext;
 
 @RequiredArgsConstructor
@@ -22,6 +28,7 @@ public class ChatApi {
     final ChatSession chatSession;
     final UserChatSessions userChatSessions;
     final UserContext userContext;
+    final UserChatSessionMemories userChatSessionMemories;
 
     @PostMapping("/start")
     public UserChatSessionDto start() {
@@ -38,6 +45,13 @@ public class ChatApi {
             throw new RuntimeException("session does not belong to current user");
         }
         return chatSession.sendMessage(session, request.getMessage());
+    }
+
+    @GetMapping("/history")
+    public ResponseEntity<List<UserChatSessionMemoryProjection>> history() {
+        var currentUser = userContext.getCurrentUser().orElseThrow();
+        var sessions = userChatSessionMemories.getLatestMemoryForEachSessionByUserId(currentUser.getUid());
+        return ResponseEntity.ok(sessions);
     }
 
 }

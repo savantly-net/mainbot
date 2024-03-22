@@ -47,4 +47,9 @@ public class UserChatSessionMemoriesImpl implements UserChatSessionMemories {
         return repository.findById(id).orElseThrow();
     }
 
+    @Override
+    public List<UserChatSessionMemoryProjection> getLatestMemoryForEachSessionByUserId(String userId) {
+        return repository.findLatestByUserIdGroupBySession(userId);
+    }
+
 }

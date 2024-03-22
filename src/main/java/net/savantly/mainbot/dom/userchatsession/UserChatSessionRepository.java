@@ -10,5 +10,5 @@ public interface UserChatSessionRepository {
     Optional<UserChatSession> findById(String id);
 
     List<UserChatSession> findByUserId(String userId);
-    
+
 }
