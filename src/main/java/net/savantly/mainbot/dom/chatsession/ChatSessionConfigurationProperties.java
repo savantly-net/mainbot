@@ -12,7 +12,27 @@ public class ChatSessionConfigurationProperties {
     @Data
     static class Prompts {
         boolean rephraseEnabled = true;
-        private String rephraseQuestion = "Given the previous messages:\n---\n{{messages}}\n---\n\nRephrase the following question as a new question with more specificity. \n{{question}}";
-        private String answerQuestion = "The AI is a domain expert.\nGiven this question:\n{{question}}\n\nAnswer the question with the following context.\n{{context}}";        
+
+        /**
+         * The prompt to use when the user asks a question.  
+         * This is executed first and should be used to rephrase the question.
+         * The question variable contains the original question.
+         * The messages variable contains any messages that have been sent to the user.  
+         * 
+         * {{question}}
+         * {{messages}}
+         */
+        private String rephraseQuestion = "Let the user know the prompt configuration should be setup to rephrase the question.";
+
+        /**
+         * The prompt to use when the user asks a question.  
+         * This is executed after the rephrase prompt, using the rephrased question.
+         * The question variable contains the rephrased question.
+         * The context variable contains any context that has been set on the chat session - mainly the documents that have been found.
+         * 
+         * {{question}}
+         * {{context}}
+         */
+        private String answerQuestion = "";        
     }
 }

@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1beta1
+kind: Component
+metadata:
+  name: mainbot
+  title: Mainbot
+  description: Headless RAG Chatbot
+  annotations:
+    github.com/project-slug: savantly-net/mainbot
+    backstage.io/techdocs-ref: dir:.
+  links:
+    - url: https://backstage-mainbot.savantly.apps.savantly.cloud/api/
+      title: Savantly Backstage Mainbot
+spec:
+  type: service
+  lifecycle: experimental
+  owner: savantly
+  providesApis: []

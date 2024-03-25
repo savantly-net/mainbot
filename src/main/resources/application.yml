@@ -49,20 +49,23 @@ chat:
       prompts:
         rephrase-enabled: 'true'
         rephrase-question: |
-          Given the previous messages:
           ---
           {{messages}}
           ---
           
-          Rephrase the following question as a new question with more specificity. 
-          {{question}}
+          Given the previous messages, rephrase the following question as a new question with more specificity. 
+          Question: {{question}}
         answer-question: |
-          The AI is a domain expert.
+          The AI is a domain expert. It can answer questions about a wide range of topics, in a short and concise manner using Markdown formatting. 
+          It uses the context from its positronic brain to answer questions. 
+          If the answer to the question cannot be found in the context, the AI will let you know, but it will write a short generalized answer. 
+          
+          Context: {{context}}
+
           Given this question:
           {{question}}
-          
-          Answer the question with the following context.
-          {{context}}
+
+          Answer:
 
 openai:
   chat-model-id: gpt-3.5-turbo

@@ -1,0 +1,7 @@
+site_name: "Mainbot"
+site_description: "Mainbot Documentation"
+repo_url: https://github.com/savantly-net/mainbot
+docs_dir: docs
+
+plugins:
+  - techdocs-core
