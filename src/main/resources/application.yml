@@ -67,6 +67,10 @@ chat:
 
           Answer:
 
+documents:
+  chunking:
+    enabled: true
+
 openai:
   chat-model-id: gpt-3.5-turbo
 #  chat-model-id: gpt-4-1106-preview
@@ -81,3 +85,11 @@ pinecone:
   index: ${PINECONE_INDEX}
   environment: ${PINECONE_ENVIRONMENT}
   project-name: ${PINECONE_PROJECT_NAME}
+
+# Example showing auth proxy headers for OpenSearch
+opensearch:
+  default-headers:
+    x-forwarded-user: 
+    - ${OPENSEARCH_USER:admin}
+    x-forwarded-roles: 
+    - ${OPENSEARCH_ROLES:admin}

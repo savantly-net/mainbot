@@ -1,0 +1,10 @@
+opensearch:
+  default-headers:
+    x-forwarded-user: 
+    - ${OPENSEARCH_USER:admin}
+    x-forwarded-groups: 
+    - ${OPENSEARCH_ROLES:admin}
+  client-cert-path: ${OPENSEARCH_CLIENT_CERT_PATH:}
+  client-key-path: ${OPENSEARCH_CLIENT_KEY_PATH:}
+  trust-store-path: ${OPENSEARCH_TRUST_STORE_PATH:}
+  trust-store-password: ${OPENSEARCH_TRUST_STORE_PASSWORD:changeit}

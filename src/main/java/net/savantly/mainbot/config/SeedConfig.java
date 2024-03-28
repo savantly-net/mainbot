@@ -11,6 +11,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.savantly.mainbot.dom.documents.DocumentAddRequest;
 import net.savantly.mainbot.dom.documents.DocumentService;
 
 @Configuration
@@ -25,7 +26,6 @@ public class SeedConfig {
         private String seedFolder = "classpath:seed";
         private String namespace = "/admin";
     }
-
 
     private final DocumentService documentService;
 
@@ -51,7 +51,13 @@ public class SeedConfig {
                     if (seed.exists()) {
                         log.info("seeding {}", seed.getAbsolutePath());
                         var document = Document.from(Files.readString(seed.toPath()));
-                        documentService.addDocument(document, properties.getNamespace());
+                        var request = new DocumentAddRequest()
+                                .setId(seedFile.getName())
+                                .setNamespace(properties.getNamespace())
+                                .setText(document.text())
+                                .setUri(seedFile.getName());
+
+                        documentService.addDocument(request);
                     } else {
                         log.error("seed file {} does not exist", seed.getAbsolutePath());
                     }
