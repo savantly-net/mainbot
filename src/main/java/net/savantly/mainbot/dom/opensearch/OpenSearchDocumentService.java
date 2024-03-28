@@ -23,7 +23,6 @@ import net.savantly.mainbot.dom.documents.DocumentService;
 import net.savantly.mainbot.dom.documents.IndexDocument;
 import net.savantly.mainbot.dom.documents.processing.DocumentProcessorManager;
 import net.savantly.mainbot.dom.embeddingstore.DocumentEmbedder;
-import net.savantly.mainbot.dom.embeddingstore.EmbeddingStoreProvider;
 
 @Slf4j
 public class OpenSearchDocumentService implements DocumentService {
@@ -34,7 +33,8 @@ public class OpenSearchDocumentService implements DocumentService {
     private final DocumentEmbedder documentEmbedder;
     RestHighLevelClient client;
 
-    public OpenSearchDocumentService(OpenSearchConfiguration configuration, DocumentProcessorManager processorManager, DocumentEmbedder documentEmbedder, RestHighLevelClient client) {
+    public OpenSearchDocumentService(OpenSearchConfiguration configuration, DocumentProcessorManager processorManager,
+            DocumentEmbedder documentEmbedder, RestHighLevelClient client) {
         this.configuration = configuration;
         this.processorManager = processorManager;
         this.documentEmbedder = documentEmbedder;
@@ -87,7 +87,6 @@ public class OpenSearchDocumentService implements DocumentService {
 
     @Override
     public List<String> addDocument(DocumentAddRequest documentRequest) {
-
 
         final IndexDocument processedDoc = processorManager
                 .processDocument(IndexDocument.fromAddRequest(documentRequest));

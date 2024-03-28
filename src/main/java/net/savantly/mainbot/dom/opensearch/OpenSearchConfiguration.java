@@ -17,6 +17,7 @@ import net.savantly.mainbot.dom.apiclient.ApiClient;
 import net.savantly.mainbot.dom.apiclient.SslContextGenerator;
 import net.savantly.mainbot.dom.documents.DocumentService;
 import net.savantly.mainbot.dom.documents.processing.DocumentProcessorManager;
+import net.savantly.mainbot.dom.embeddingstore.DocumentEmbedder;
 
 @Configuration
 @ConfigurationProperties(prefix = "opensearch")
@@ -32,8 +33,8 @@ public class OpenSearchConfiguration {
     private String clientKeyPath;
 
     @Bean
-    public DocumentService openSearchDocumentService(DocumentProcessorManager processorManager, RestHighLevelClient client) {
-        return new OpenSearchDocumentService(this, processorManager, client);
+    public DocumentService openSearchDocumentService(DocumentProcessorManager processorManager, DocumentEmbedder embedder, RestHighLevelClient client) {
+        return new OpenSearchDocumentService(this, processorManager, embedder, client);
     }
 
     public class RestClientConfig extends AbstractOpenSearchConfiguration {
