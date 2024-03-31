@@ -40,16 +40,26 @@ opensearch:
   
   forwarded-headers: # Headers to be forwarded to OpenSearch. Useful for proxy-authentication scenarios when you want to pass user information to OpenSearch
     - Authorization
+    - x-forwarded-user
+    - x-forwarded-groups
 
-  authentication:
-    method: ${OPENSEARCH_AUTH_METHOD:BASIC} # Authentication method to be used for client auth to the OpenSearch cluster. Supported values are BASIC, OAUTH2, and NONE
+  global-authentication:
+    method: ${OPENSEARCH_AUTH_METHOD:BASIC} # Authentication method to be used for client auth to the OpenSearch cluster. Supported values are BASIC, OAUTH2, and NONE. NONE may be used to pass through a pre-authenticated request, so that the OpenSearch cluster can handle the authentication
     basic: # Basic authentication settings to pass with every request
       username: ${OPENSEARCH_USERNAME:admin}
       password: ${OPENSEARCH_PASSWORD:admin}
     oauth2: # OAuth2 authentication settings to pass with every request, when 'method' is set to OAUTH2
       client-registration-id: opensearch # The registration id of the client in the oauth2 configuration
+
   bootstrap:
-    enabled: ${BOOTSTRAP_ENABLED:true}
+    enabled: ${OPENSEARCH_BOOTSTRAP_ENABLED:true}
+    authentication:
+      method: ${OPENSEARCH_BOOTSTRAP_AUTH_METHOD:BASIC} # Authentication method to be used for client auth to the OpenSearch cluster. Supported values are BASIC, OAUTH2, and NONE
+      basic: # Basic authentication settings to pass with every request
+        username: ${OPENSEARCH_BOOTSTRAP_USERNAME:admin}
+        password: ${OPENSEARCH_BOOTSTRAP_PASSWORD:admin}
+      oauth2: # OAuth2 authentication settings to pass with every request, when 'method' is set to OAUTH2
+        client-registration-id: opensearch # The registration id of the client in the oauth2 configuration
     agent-workflow-replacements:
       OPENAI_API_KEY: ${OPENAI_API_KEY:}
     model-registration-path: ${BOOTSTRAP_MODEL_REGISTRATION_PATH:classpath:/opensearch/models/openai.json}

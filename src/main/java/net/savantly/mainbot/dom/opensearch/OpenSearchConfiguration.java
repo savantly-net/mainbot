@@ -13,6 +13,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager;
 
 import jakarta.annotation.PostConstruct;
 import lombok.Data;
@@ -36,7 +37,7 @@ public class OpenSearchConfiguration {
      * The headers to forward from the incoming request to the opensearch cluster.
      */
     private List<String> forwardedHeaders = new ArrayList<>();
-    
+
     private String trustStorePath;
     private String trustStorePassword;
     private String clientCertPath;
@@ -48,9 +49,10 @@ public class OpenSearchConfiguration {
     private Bootstrap bootstrap = new Bootstrap();
 
     /**
-     * The authentication configuration for the opensearch cluster.
+     * The global authentication configuration for the opensearch cluster. Will be
+     * used for every user request.
      */
-    private AuthenticationConfig authentication = new AuthenticationConfig();
+    private AuthenticationConfig globalAuthentication = new AuthenticationConfig();
 
     @PostConstruct
     public void init() {
@@ -58,12 +60,26 @@ public class OpenSearchConfiguration {
     }
 
     @Bean
+    public OpenSearchClient globalOpenSearchClient(OAuth2AuthorizedClientManager clientManager) {
+        var restClientConfig = new RestClientConfig(this, this.globalAuthentication, clientManager);
+        return restClientConfig.opensearchClient();
+    }
+
+    @Bean
     public DocumentService openSearchDocumentService(DocumentProcessorManager processorManager,
-            DocumentEmbedder embedder, OpenSearchClient client) throws OpenSearchException, IOException {
-        // run the bootstrapper first
-        var bootStrapper = new OpenSearchBoostrapper(client, this.bootstrap);
+            DocumentEmbedder embedder, OpenSearchClient client, OAuth2AuthorizedClientManager clientManager)
+            throws OpenSearchException, IOException {
+
+        // run the bootstrapper first. be sure to use the bootstrapper client
+        var bootStrapper = new OpenSearchBoostrapper(bootstrapperOpenSearchClient(clientManager), this.bootstrap);
         bootStrapper.bootstrap();
+
         return new OpenSearchDocumentService(processorManager, embedder, client, this);
+    }
+
+    private OpenSearchClient bootstrapperOpenSearchClient(OAuth2AuthorizedClientManager clientManager) {
+        var restClientConfig = new RestClientConfig(this, this.bootstrap.getAuthentication(), clientManager);
+        return restClientConfig.opensearchClient();
     }
 
     static enum AuthenticationMethod {
@@ -106,13 +122,14 @@ public class OpenSearchConfiguration {
         private boolean enabled = true;
         private String indexName = "mainbot-documents";
 
+        private AuthenticationConfig authentication = new AuthenticationConfig();
+
         // Machine Learning plugin configuration
         private boolean enableMachineLearning = false;
         private String modelGroupName = "mainbot-model-group";
         private String modelName = "mainbot-model";
         private String modelRegistrationPath = "classpath:/opensearch/models/openai.json";
         private Map<String, String> modelRegistrationReplacements = new HashMap<>();
-
 
         // NOT USING YET
         private String agentWorkflowPath = "classpath:/opensearch/workflows/agent_workflow.yml";

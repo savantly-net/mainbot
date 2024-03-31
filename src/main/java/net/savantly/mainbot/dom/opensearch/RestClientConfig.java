@@ -17,25 +17,21 @@ import org.apache.hc.core5.reactor.ssl.TlsDetails;
 import org.opensearch.client.opensearch.OpenSearchClient;
 import org.opensearch.client.transport.OpenSearchTransport;
 import org.opensearch.client.transport.httpclient5.ApacheHttpClient5TransportBuilder;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager;
 
 import lombok.RequiredArgsConstructor;
 import net.savantly.mainbot.dom.apiclient.SslContextGenerator;
+import net.savantly.mainbot.dom.opensearch.OpenSearchConfiguration.AuthenticationConfig;
 import net.savantly.mainbot.http.ForwardHeadersInterceptor;
 import net.savantly.mainbot.http.OAuth2Interceptor;
 
-@Configuration
-@ConditionalOnBean(OpenSearchConfiguration.class)
 @RequiredArgsConstructor
 public class RestClientConfig {
 
     final OpenSearchConfiguration config;
+    final AuthenticationConfig authenticationConfig;
     final OAuth2AuthorizedClientManager clientManager;
 
-    @Bean
     public OpenSearchClient opensearchClient() {
 
         var sslContextBuilder = new SslContextGenerator.Builder();
@@ -83,15 +79,15 @@ public class RestClientConfig {
 
                 final TlsStrategy tlsStrategy = tlsStrategyBuilder.build();
 
-                if (config.getAuthentication().getMethod() == OpenSearchConfiguration.AuthenticationMethod.OAUTH2) {
+                if (authenticationConfig.getMethod() == OpenSearchConfiguration.AuthenticationMethod.OAUTH2) {
                     httpClientBuilder.addRequestInterceptorFirst(new OAuth2Interceptor(clientManager,
-                            config.getAuthentication().getOauth2().getClientRegistrationId()));
+                    authenticationConfig.getOauth2().getClientRegistrationId()));
                 }
 
-                if (config.getAuthentication().getMethod() == OpenSearchConfiguration.AuthenticationMethod.BASIC) {
+                if (authenticationConfig.getMethod() == OpenSearchConfiguration.AuthenticationMethod.BASIC) {
                     httpClientBuilder.setDefaultCredentialsProvider((request, context) -> {
-                        return new UsernamePasswordCredentials(config.getAuthentication().getBasic().getUsername(),
-                                config.getAuthentication().getBasic().getPassword().toCharArray());
+                        return new UsernamePasswordCredentials(authenticationConfig.getBasic().getUsername(),
+                        authenticationConfig.getBasic().getPassword().toCharArray());
                     });
                 }
 
