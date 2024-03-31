@@ -98,6 +98,5 @@ SPRING_PROFILES_ACTIVE=opensearch
 OPENAI_ENABLED=true
 OPENAI_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxx
 OPENAI_CHAT_MODEL_ID=gpt-3.5-turbo
-OPENSEARCH_ENABLED=true
 OPENSEARCH_URL=https://localhost:9200
 ```

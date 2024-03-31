@@ -6,14 +6,14 @@ spring:
     oauth2:
       client:
         registration:
-          myclient:
-            client-id: client-id
-            client-secret: client-secret
+          opensearch:
+            client-id: ${OPENSEARCH_OAUTH2_CLIENT_ID:client-id}
+            client-secret: ${OPENSEARCH_OAUTH2_CLIENT_SECRET:client-secret}
             authorization-grant-type: client_credentials
-            scope: openid
+            scope: ${OPENSEARCH_OAUTH2_SCOPE:openid}
         provider:
-          myclient:
-            token-uri: ${OAUTH2_TOKEN_URI:http://localhost:8080/oauth2/token}
+          opensearch:
+            token-uri: ${OPENSEARCH_OAUTH2_TOKEN_URI:http://localhost:8080/oauth2/token}
 
 documents:
   implementation: OPENSEARCH # The implementation to use for the document service. Supported values are OPENSEARCH and LC4J
@@ -47,7 +47,7 @@ opensearch:
       username: ${OPENSEARCH_USERNAME:admin}
       password: ${OPENSEARCH_PASSWORD:admin}
     oauth2: # OAuth2 authentication settings to pass with every request, when 'method' is set to OAUTH2
-      client-registration-id: myclient # The registration id of the client in the oauth2 configuration
+      client-registration-id: opensearch # The registration id of the client in the oauth2 configuration
   bootstrap:
     enabled: ${BOOTSTRAP_ENABLED:true}
     agent-workflow-replacements:
