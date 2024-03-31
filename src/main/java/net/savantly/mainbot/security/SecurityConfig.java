@@ -86,7 +86,7 @@ public class SecurityConfig implements ApplicationContextAware {
 		http.authenticationManager(authenticationManager);
 
 		if (enabled) {
-			log.info("creating clientFilterChain");
+			log.info("security enabled. creating clientFilterChain");
 			var permitAllMatchers = new AntPathRequestMatcher[] {
 					new AntPathRequestMatcher("/"),
 					new AntPathRequestMatcher("/login/**"),
@@ -108,6 +108,7 @@ public class SecurityConfig implements ApplicationContextAware {
 
 			enableOauthIfEnabled(http);
 			if (preauth.isEnabled()) {
+				log.info("adding preauth filter");
 				http.addFilter(new PreAuthFilter(preauth, authenticationManager));
 			}
 		} else {
@@ -134,6 +135,7 @@ public class SecurityConfig implements ApplicationContextAware {
 	private void enableOauthIfEnabled(HttpSecurity http) throws Exception {
 		var isOauthEnabled = (applicationContext.getBeansOfType(JwtDecoder.class).size() > 0);
 		if (isOauthEnabled) {
+			log.info("OAuth2 is enabled. Configuring OAuth2 security");
 			http.oauth2ResourceServer(oauth2 -> oauth2.bearerTokenResolver(bearerTokenResolver())
 					.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
 		}
