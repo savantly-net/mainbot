@@ -20,7 +20,7 @@ jobs:
         uses: savantly-net/mainbot-github-action@main
         with:
           glob-patterns: '*.md'  # Set your file pattern here
-          namespace: '/admin'
+          namespace: '/mainbot-documents'
           api-url: 'https://backstage-mainbot.savantly.apps.savantly.cloud'
           client-id: ${{ secrets.MAINBOT_CLIENT_ID }}
           client-secret: ${{ secrets.MAINBOT_CLIENT_SECRET }}
