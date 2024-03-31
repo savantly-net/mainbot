@@ -57,6 +57,10 @@ public class RestClientConfig {
             sslContextBuilder.withPEMKeys(clientCertPath, clientKeyPath,
                     config.getTrustStorePassword());
         }
+
+        if (config.isUseInsecureSSL()) {
+            sslContextBuilder.withInsecureSSL();
+        }
         try {
             final SSLContext sslContext = sslContextBuilder.build();
 
@@ -66,7 +70,7 @@ public class RestClientConfig {
 
             final ApacheHttpClient5TransportBuilder builder = ApacheHttpClient5TransportBuilder.builder(host);
             builder.setHttpClientConfigCallback(httpClientBuilder -> {
-                final TlsStrategy tlsStrategy = ClientTlsStrategyBuilder.create()
+                var tlsStrategyBuilder = ClientTlsStrategyBuilder.create()
                         .setSslContext(sslContext)
                         .setHostnameVerifier(hostnameVerifier)
                         // See https://issues.apache.org/jira/browse/HTTPCLIENT-2219
@@ -75,8 +79,9 @@ public class RestClientConfig {
                             public TlsDetails create(final SSLEngine sslEngine) {
                                 return new TlsDetails(sslEngine.getSession(), sslEngine.getApplicationProtocol());
                             }
-                        })
-                        .build();
+                        });
+
+                final TlsStrategy tlsStrategy = tlsStrategyBuilder.build();
 
                 if (config.getAuthentication().getMethod() == OpenSearchConfiguration.AuthenticationMethod.OAUTH2) {
                     httpClientBuilder.addRequestInterceptorFirst(new OAuth2Interceptor(clientManager,
@@ -99,6 +104,7 @@ public class RestClientConfig {
                         .create()
                         .setTlsStrategy(tlsStrategy)
                         .build();
+                
 
                 return httpClientBuilder
                         .setConnectionManager(connectionManager);

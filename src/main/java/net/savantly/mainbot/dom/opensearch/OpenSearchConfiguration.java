@@ -43,6 +43,7 @@ public class OpenSearchConfiguration {
     private String clientKeyPath;
 
     private boolean skipHostnameVerification = false;
+    private boolean useInsecureSSL = false;
 
     private Bootstrap bootstrap = new Bootstrap();
 

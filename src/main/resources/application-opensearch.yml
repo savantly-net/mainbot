@@ -35,6 +35,7 @@ opensearch:
   trust-store-path: ${OPENSEARCH_TRUST_STORE_PATH:} # Path to the trust store if using self-signed certificates
   trust-store-password: ${OPENSEARCH_TRUST_STORE_PASSWORD:changeit}
 
+  use-insecure-ssl: ${OPENSEARCH_USE_INSECURE_SSL:true} # Use insecure SSL when connecting to OpenSearch
   skip-hostname-verification: ${OPENSEARCH_SKIP_HOSTNAME_VERIFICATION:true} # Skip hostname verification when using self-signed certificates
   
   forwarded-headers: # Headers to be forwarded to OpenSearch. Useful for proxy-authentication scenarios when you want to pass user information to OpenSearch

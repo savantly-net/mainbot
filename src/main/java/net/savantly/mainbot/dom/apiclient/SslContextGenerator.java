@@ -6,14 +6,18 @@ import java.util.Objects;
 
 import javax.net.ssl.SSLContext;
 
+import org.apache.hc.client5.http.ssl.TrustAllStrategy;
 import org.apache.hc.client5.http.ssl.TrustSelfSignedStrategy;
 import org.apache.hc.core5.ssl.SSLContextBuilder;
+import org.apache.hc.core5.ssl.TrustStrategy;
 
 import net.savantly.mainbot.x509.KeystoreProvider;
 
 public class SslContextGenerator {
 
     public static class Builder {
+
+        private boolean insecureSsl;
 
         private boolean useSSL = false;
         private String trustStorePath;
@@ -49,6 +53,21 @@ public class SslContextGenerator {
             return this;
         }
 
+        public Builder withInsecureSSL() {
+            this.useSSL = true;
+            this.insecureSsl = true;
+            this.trustStorePath = null;
+            this.trustStorePassword = null;
+            return this;
+        }
+
+        private TrustStrategy getTrustStrategy() {
+            if (insecureSsl) {
+                return new TrustAllStrategy();
+            }
+            return new TrustSelfSignedStrategy();
+        }
+
         public SSLContext build() throws Exception {
 
             if (Objects.isNull(this.keyStore) && keyStorePath != null) {
@@ -65,7 +84,7 @@ public class SslContextGenerator {
                 try (FileInputStream trustStoreInputStream = new FileInputStream(trustStorePath)) {
                     trustStore.load(trustStoreInputStream, trustStorePassword.toCharArray());
                 }
-                sslContextBuilder.loadTrustMaterial(trustStore, new TrustSelfSignedStrategy());
+                sslContextBuilder.loadTrustMaterial(trustStore, getTrustStrategy());
             }
 
             if (this.useClientCert) {
