@@ -19,7 +19,7 @@ public class SslContextGenerator {
 
         private boolean insecureSsl;
 
-        private boolean useSSL = false;
+        private boolean useTrustStore = false;
         private String trustStorePath;
         private String trustStorePassword;
         private String trustStoreType;
@@ -31,7 +31,7 @@ public class SslContextGenerator {
         private KeyStore keyStore;
 
         public Builder withTrustStore(String path, String password, String type) {
-            this.useSSL = true;
+            this.useTrustStore = true;
             this.trustStorePath = path;
             this.trustStorePassword = password;
             this.trustStoreType = type;
@@ -54,7 +54,6 @@ public class SslContextGenerator {
         }
 
         public Builder withInsecureSSL() {
-            this.useSSL = true;
             this.insecureSsl = true;
             this.trustStorePath = null;
             this.trustStorePassword = null;
@@ -79,12 +78,14 @@ public class SslContextGenerator {
 
             var sslContextBuilder = SSLContextBuilder.create();
 
-            if (this.useSSL) {
+            if (this.useTrustStore) {
                 KeyStore trustStore = KeyStore.getInstance(trustStoreType);
                 try (FileInputStream trustStoreInputStream = new FileInputStream(trustStorePath)) {
                     trustStore.load(trustStoreInputStream, trustStorePassword.toCharArray());
                 }
                 sslContextBuilder.loadTrustMaterial(trustStore, getTrustStrategy());
+            } else {
+                sslContextBuilder.loadTrustMaterial(getTrustStrategy());
             }
 
             if (this.useClientCert) {
