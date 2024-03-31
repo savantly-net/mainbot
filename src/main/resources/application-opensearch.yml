@@ -1,10 +1,67 @@
+# The oauth2 is used to authenticate the service for automation purposes.
+# When the Opensearch authentication method is set to OAUTH2, the service will authenticate with the OpenSearch cluster using the OAuth2 client credentials.
+# User authentication should be done using the OpenSearch settings
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          myclient:
+            client-id: client-id
+            client-secret: client-secret
+            authorization-grant-type: client_credentials
+            scope: openid
+        provider:
+          myclient:
+            token-uri: ${OAUTH2_TOKEN_URI:http://localhost:8080/oauth2/token}
+
+documents:
+  implementation: OPENSEARCH # The implementation to use for the document service. Supported values are OPENSEARCH and LC4J
+
 opensearch:
-  default-headers:
-    x-forwarded-user: 
-    - ${OPENSEARCH_USER:admin}
-    x-forwarded-groups: 
-    - ${OPENSEARCH_ROLES:admin}
-  client-cert-path: ${OPENSEARCH_CLIENT_CERT_PATH:}
+  index-name: ${OPENSEARCH_INDEX_NAME:mainbot-documents} # Index name to be used for storing the data
+  url: ${OPENSEARCH_URL:https://localhost:9200} # URL of the OpenSearch cluster
+  path-prefix: ${OPENSEARCH_PATH_PREFIX:/} # Path prefix for the OpenSearch cluster
+
+  default-headers: {} # Default headers to be sent with each request. May be used for proxy-authentication scenarios
+  #  x-forwarded-user: 
+  #  - ${OPENSEARCH_USER:admin}
+  #  x-forwarded-groups: 
+  #  - ${OPENSEARCH_ROLES:admin}
+
+  client-cert-path: ${OPENSEARCH_CLIENT_CERT_PATH:} # Path to the client certificate if used for authentication
   client-key-path: ${OPENSEARCH_CLIENT_KEY_PATH:}
-  trust-store-path: ${OPENSEARCH_TRUST_STORE_PATH:}
+
+  trust-store-path: ${OPENSEARCH_TRUST_STORE_PATH:} # Path to the trust store if using self-signed certificates
   trust-store-password: ${OPENSEARCH_TRUST_STORE_PASSWORD:changeit}
+
+  skip-hostname-verification: ${OPENSEARCH_SKIP_HOSTNAME_VERIFICATION:true} # Skip hostname verification when using self-signed certificates
+  
+  forwarded-headers: # Headers to be forwarded to OpenSearch. Useful for proxy-authentication scenarios when you want to pass user information to OpenSearch
+    - Authorization
+
+  authentication:
+    method: ${OPENSEARCH_AUTH_METHOD:BASIC} # Authentication method to be used for client auth to the OpenSearch cluster. Supported values are BASIC, OAUTH2, and NONE
+    basic: # Basic authentication settings to pass with every request
+      username: ${OPENSEARCH_USERNAME:admin}
+      password: ${OPENSEARCH_PASSWORD:admin}
+    oauth2: # OAuth2 authentication settings to pass with every request, when 'method' is set to OAUTH2
+      client-registration-id: myclient # The registration id of the client in the oauth2 configuration
+  bootstrap:
+    enabled: ${BOOTSTRAP_ENABLED:true}
+    agent-workflow-replacements:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:}
+    model-registration-path: ${BOOTSTRAP_MODEL_REGISTRATION_PATH:classpath:/opensearch/models/openai.json}
+    model-registration-replacements:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:}
+
+seed:
+  enabled: ${SEED_ENABLED:false}
+
+logging:
+  level:
+    org.opensearch.client: DEBUG
+    org.apache.hc.client5.http: INFO
+    org.apache.hc.client5.http.wire: INFO
+    org.apache.hc.client5.http.headers: INFO
+    org.apache.hc.client5.http.ssl: INFO

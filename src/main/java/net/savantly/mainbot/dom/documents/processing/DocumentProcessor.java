@@ -1,10 +1,10 @@
 package net.savantly.mainbot.dom.documents.processing;
 
-import net.savantly.mainbot.dom.documents.IndexDocument;
+import net.savantly.mainbot.dom.documents.DocumentPartCollection;
 
 public interface DocumentProcessor {
 
     int getPriority();
 
-    IndexDocument processDocument(IndexDocument document);
+    DocumentPartCollection processDocument(DocumentPartCollection document);
 }

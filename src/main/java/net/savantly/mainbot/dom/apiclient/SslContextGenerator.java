@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import javax.net.ssl.SSLContext;
 
+import org.apache.hc.client5.http.ssl.TrustSelfSignedStrategy;
 import org.apache.hc.core5.ssl.SSLContextBuilder;
 
 import net.savantly.mainbot.x509.KeystoreProvider;
@@ -49,10 +50,6 @@ public class SslContextGenerator {
         }
 
         public SSLContext build() throws Exception {
-            KeyStore trustStore = KeyStore.getInstance(trustStoreType);
-            try (FileInputStream trustStoreInputStream = new FileInputStream(trustStorePath)) {
-                trustStore.load(trustStoreInputStream, trustStorePassword.toCharArray());
-            }
 
             if (Objects.isNull(this.keyStore) && keyStorePath != null) {
                 keyStore = KeyStore.getInstance(keyStoreType);
@@ -64,7 +61,11 @@ public class SslContextGenerator {
             var sslContextBuilder = SSLContextBuilder.create();
 
             if (this.useSSL) {
-                sslContextBuilder.loadTrustMaterial(trustStore, null);
+                KeyStore trustStore = KeyStore.getInstance(trustStoreType);
+                try (FileInputStream trustStoreInputStream = new FileInputStream(trustStorePath)) {
+                    trustStore.load(trustStoreInputStream, trustStorePassword.toCharArray());
+                }
+                sslContextBuilder.loadTrustMaterial(trustStore, new TrustSelfSignedStrategy());
             }
 
             if (this.useClientCert) {

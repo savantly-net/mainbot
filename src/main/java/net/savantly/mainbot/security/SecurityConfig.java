@@ -7,9 +7,11 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
@@ -20,6 +22,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.savantly.mainbot.dom.appuser.AppUsers;
+import net.savantly.mainbot.security.oauth2.OAuth2ClientService;
 
 /**
  * This class represents a configuration class that is used to configure the
@@ -54,6 +57,11 @@ public class SecurityConfig implements ApplicationContextAware {
 	private PreAuthConfigProperties preauth;
 
 	private ApplicationContext applicationContext;
+
+	@Bean
+	public OAuth2ClientService oAuth2ClientService(OAuth2AuthorizedClientService authorizedClientService) {
+		return new OAuth2ClientService(authorizedClientService);
+	}
 
 	@Bean
 	public LoginSuccessListener loginSuccessListener(AppUsers playerService) {
@@ -112,7 +120,7 @@ public class SecurityConfig implements ApplicationContextAware {
 
 		log.info("", http);
 
-		return http.build();
+		return http.oauth2Client(Customizer.withDefaults()).build();
 	}
 
 	@Bean

@@ -3,7 +3,7 @@ package net.savantly.mainbot.dom.documents.processing;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
-import net.savantly.mainbot.dom.documents.IndexDocument;
+import net.savantly.mainbot.dom.documents.DocumentPartCollection;
 
 @Slf4j
 public class DocumentProcessorManager {
@@ -19,8 +19,8 @@ public class DocumentProcessorManager {
         this.processors = processors;
     }
 
-    public IndexDocument processDocument(IndexDocument document) {
-        IndexDocument processed = document;
+    public DocumentPartCollection processDocument(DocumentPartCollection document) {
+        DocumentPartCollection processed = document;
         for (DocumentProcessor processor : processors) {
             processed = processor.processDocument(processed);
         }

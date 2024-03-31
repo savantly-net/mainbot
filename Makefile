@@ -5,7 +5,7 @@ dev:
 	@echo "Make sure you have a .env file in the root directory"
 	@echo "Exporting environment variables..."
 	$(call setup_env, .env)
-	SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE},dev ./gradlew bootRun
+	SPRING_PROFILES_ACTIVE=dev,${SPRING_PROFILES_ACTIVE} ./gradlew bootRun
 
 .PHONY dev-docker:
 dev-docker:

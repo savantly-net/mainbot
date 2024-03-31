@@ -11,7 +11,7 @@ import net.savantly.mainbot.dom.documents.DocumentPart;
 import net.savantly.mainbot.dom.documents.DocumentQuery;
 import net.savantly.mainbot.dom.documents.DocumentSearchResult;
 import net.savantly.mainbot.dom.documents.DocumentService;
-import net.savantly.mainbot.dom.documents.IndexDocument;
+import net.savantly.mainbot.dom.documents.DocumentPartCollection;
 import net.savantly.mainbot.dom.documents.processing.DocumentProcessorManager;
 import net.savantly.mainbot.dom.embeddingstore.DocumentEmbedder;
 import net.savantly.mainbot.dom.embeddingstore.EmbeddingStoreProvider;
@@ -27,8 +27,8 @@ public class LC4JDocumentService implements DocumentService {
 
         var store = embeddingStoreProvider.embeddingStore(document.getNamespace());
 
-        final IndexDocument processedDoc = documentProcessorManager
-                .processDocument(IndexDocument.fromAddRequest(document));
+        final DocumentPartCollection processedDoc = documentProcessorManager
+                .processDocument(DocumentPartCollection.fromAddRequest(document));
 
         final List<String> ids = new ArrayList<>();
         for (DocumentPart part : processedDoc.getParts()) {

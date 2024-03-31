@@ -1,0 +1,112 @@
+# This template demonstrates provisioning the resources for a 
+# Chain-of-Thought chat bot
+name: tool-register-agent
+description: test case
+use_case: REGISTER_AGENT
+version:
+  template: 1.0.0
+  compatibility:
+  - 2.12.0
+  - 3.0.0
+workflows:
+  # This workflow defines the actions to be taken when the Provision Workflow API is used
+  provision:
+    nodes:
+    # The first three nodes create a connector to a remote model, registers and deploy that model
+    - id: create_connector_1
+      type: create_connector
+      user_inputs:
+        name: OpenAI Chat Connector
+        description: The connector to public OpenAI model service for GPT 3.5
+        version: '1'
+        protocol: http
+        parameters:
+          endpoint: api.openai.com
+          model: gpt-3.5-turbo
+        credential:
+          openAI_key: 'OPENAI_API_KEY'
+        actions:
+        - action_type: predict
+          method: POST
+          url: https://${parameters.endpoint}/v1/chat/completions
+    - id: register_model_2
+      type: register_remote_model
+      previous_node_inputs:
+        create_connector_1: connector_id
+      user_inputs:
+        # deploy: true could be added here instead of the deploy step below
+        name: openAI-gpt-3.5-turbo
+        description: test model
+    - id: deploy_model_3
+      type: deploy_model
+      previous_node_inputs:
+        register_model_2: model_id
+    # For example purposes, the model_id obtained as the output of the deploy_model_3 step will be used
+    # for several below steps.  However, any other deployed model_id can be used for those steps.
+    # This is one example tool from the Agent Framework.
+    - id: cat_index_tool
+      type: create_tool
+      user_inputs:
+        name: CatIndexTool
+        type: CatIndexTool
+        parameters:
+          max_iteration: 5
+    # This simple agent only has one tool, but could be configured with many tools
+    - id: sub_agent
+      type: register_agent
+      previous_node_inputs:
+        deploy-model-3: model_id
+        cat_index_tool: tools
+      user_inputs:
+        name: Sub Agent
+        type: conversational
+        parameters:
+          hello: world
+        llm.parameters:
+          max_iteration: '5'
+          stop_when_no_tool_found: 'true'
+        memory:
+          type: conversation_index
+        app_type: chatbot
+    # An agent can be used itself as a tool in a nested relationship
+    - id: agent_tool
+      type: create_tool
+      previous_node_inputs:
+        sub_agent: agent_id
+      user_inputs:
+        name: AgentTool
+        type: AgentTool
+        parameters:
+          max_iteration: 5
+    # An ML Model can be used as a tool
+    - id: ml_model_tool
+      type: create_tool
+      previous_node_inputs:
+        deploy-model-3: model_id
+      user_inputs:
+        name: MLModelTool
+        type: MLModelTool
+        alias: language_model_tool
+        parameters:
+          prompt: Answer the question as best you can.
+          response_filter: choices[0].message.content
+    # This final agent will be the interface for the CoT chat user
+    # Using a flow agent type tools_order matters
+    - id: root_agent
+      type: register_agent
+      previous_node_inputs:
+        deploy-model-3: model_id
+        ml_model_tool: tools
+        agent_tool: tools
+      user_inputs:
+        name: DEMO-Test_Agent
+        type: flow
+        parameters:
+          prompt: Answer the question as best you can.
+        llm.parameters:
+          max_iteration: '5'
+          stop_when_no_tool_found: 'true'
+        tools_order: ['agent_tool', 'ml_model_tool']
+        memory:
+          type: conversation_index
+        app_type: chatbot

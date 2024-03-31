@@ -1,0 +1,32 @@
+{
+    "name": "MODEL_NAME",
+    "function_name": "remote",
+    "model_group_id": "MODEL_GROUP_ID",
+    "description": "test model",
+    "connector": {
+        "name": "OpenAI Connector",
+        "description": "The connector to public OpenAI model service for GPT 3.5",
+        "version": 1,
+        "protocol": "http",
+        "parameters": {
+            "endpoint": "api.openai.com",
+            "max_tokens": 100,
+            "temperature": 0,
+            "model": "gpt-3.5-turbo"
+        },
+        "credential": {
+            "openAI_key": "OPENAI_API_KEY"
+        },
+        "actions": [
+            {
+                "action_type": "predict",
+                "method": "POST",
+                "url": "https://${parameters.endpoint}/v1/completions",
+                "headers": {
+                    "Authorization": "Bearer ${credential.openAI_key}"
+                },
+                "request_body": "{ \"model\": \"${parameters.model}\", \"prompt\": \"${parameters.prompt}\", \"max_tokens\": ${parameters.max_tokens}, \"temperature\": ${parameters.temperature} }"
+            }
+        ]
+    }
+}

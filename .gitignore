@@ -35,7 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
-src/main/resources/application-local.properties
+application-local*
 src/main/resources/application-dev.properties
 data
 appmap.yml

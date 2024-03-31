@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import net.savantly.mainbot.dom.chatmessage.ChatRequestDto;
 import net.savantly.mainbot.dom.chatmessage.ChatResponseDto;
 import net.savantly.mainbot.dom.chatsession.ChatSession;
+import net.savantly.mainbot.dom.userchatsession.InvalidSession;
 import net.savantly.mainbot.dom.userchatsession.UserChatSessionDto;
 import net.savantly.mainbot.dom.userchatsession.UserChatSessions;
 import net.savantly.mainbot.dom.userchatsessionmemory.UserChatSessionMemories;
@@ -40,7 +41,7 @@ public class ChatApi {
     @PostMapping("/session")
     public ChatResponseDto chat(@RequestBody @Validated ChatRequestDto request) {
         var currentUser = userContext.getCurrentUser().orElseThrow();
-        var session = userChatSessions.getById(request.getSessionId()).orElseThrow();
+        var session = userChatSessions.getById(request.getSessionId()).orElseThrow(() -> new InvalidSession());
         if (!session.getUserId().equals(currentUser.getUid())) {
             throw new RuntimeException("session does not belong to current user");
         }

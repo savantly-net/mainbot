@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class IndexDocument {
+public class DocumentPartCollection {
     
     private String id;
     private String namespace;
@@ -20,7 +20,7 @@ public class IndexDocument {
     private Set<DocumentPart> parts = new HashSet<>();
     private Map<String, String> metadata = new HashMap<>();
 
-    public IndexDocument addPart(DocumentPart part) {
+    public DocumentPartCollection addPart(DocumentPart part) {
         this.parts.add(part);
         return this;
     }
@@ -29,8 +29,8 @@ public class IndexDocument {
         return !this.parts.isEmpty();
     }
 
-    static public IndexDocument fromAddRequest(DocumentAddRequest request) {
-        return new IndexDocument()
+    static public DocumentPartCollection fromAddRequest(DocumentAddRequest request) {
+        return new DocumentPartCollection()
                 .setId(request.getId())
                 .setNamespace(request.getNamespace())
                 .setUri(request.getUri())

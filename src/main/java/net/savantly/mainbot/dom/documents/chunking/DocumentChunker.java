@@ -9,7 +9,7 @@ import dev.langchain4j.data.document.splitter.DocumentSplitters;
 import dev.langchain4j.data.segment.TextSegment;
 import lombok.extern.slf4j.Slf4j;
 import net.savantly.mainbot.dom.documents.DocumentPart;
-import net.savantly.mainbot.dom.documents.IndexDocument;
+import net.savantly.mainbot.dom.documents.DocumentPartCollection;
 import net.savantly.mainbot.dom.documents.processing.DocumentProcessor;
 
 @Slf4j
@@ -29,7 +29,7 @@ public class DocumentChunker implements DocumentProcessor {
         return 0;
     }
 
-    public IndexDocument processDocument(IndexDocument document) {
+    public DocumentPartCollection processDocument(DocumentPartCollection document) {
         if (!config.isEnabled()) {
             log.info("Document chunking is disabled");
             return document;
@@ -49,12 +49,14 @@ public class DocumentChunker implements DocumentProcessor {
 
     }
 
-    private IndexDocument chunkDocument(IndexDocument document) {
+    private DocumentPartCollection chunkDocument(DocumentPartCollection document) {
         log.info("Chunking document: {}", document.getId());
         List<TextSegment> segments = splitter.split(Document.from(document.getText()));
         log.info("Document chunked into {} parts", segments.size());
         for (var i = 0; i < segments.size(); i++) {
             final DocumentPart part = new DocumentPart()
+                    .setParentId(document.getId())
+                    .setUri(document.getUri())
                     .setChunkIndex(i)
                     .setMetadata(segments.get(i).metadata().asMap())
                     .setText(segments.get(i).text());
