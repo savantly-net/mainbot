@@ -33,53 +33,49 @@ open [http://localhost:8080/swagger-ui/index.html](http://localhost:4180/swagger
 - Retrieval Augmented Generation as default chat experience
 
 
-#### Authentication
-Options for authentication are:  
+#### Authentication Options 
 - Anonymous
 - JWT
 - OAuth2
 
-#### Conversation storage
-Options for persistent storage are:  
+#### Conversation Storage Options
 - H2
 - Postgres
 
-#### Vector storage
-Options for vector storage are:  
+#### Vector storage Options 
 - Pinecone
 - OpenSearch
 - In Memory
 
-#### Embedding pipeline
-Options for embedding pipeline are:  
+#### Embedding pipeline Options
 - OpenAI
 - OpenSearch 
 - Replicate  
 
 
-### Swagger
+## Swagger
 
 
 ![swagger](./docs/images/swagger.png)
 
 
-#### Starting a session 
+### Starting a session 
 
 ![start a session](./docs/images/start-session.png)  
 
 
-#### Sending a message
+### Sending a message
 
 ![send a message](./docs/images/session-message.png)
 
 
-### Example Configurations  
+## Example Configurations  
 Spring Profiles are used to configure the application.  
-See some example configurations (./src/main/resources/)(./src/main/resources/)
+See some example configurations (./src/main/resources/)[./src/main/resources/]
 
 The configuration can be set in YAML, Properties, or Environment variables.  
 
-#### OpenAI for Embedding and Pinecone for Vector Storage
+### OpenAI for Embedding and Pinecone for Vector Storage
 
 ```bash
 OPENAI_ENABLED=true
@@ -93,7 +89,7 @@ PINECONE_ENVIRONMENT=us-east4-gcp
 APP_SECURITY_ENABLED=false
 ```
 
-#### OpenAI for Embedding and OpenSearch for Vector Storage
+### OpenAI for Embedding and OpenSearch for Vector Storage
 
 See the application configuration in [application-opensearch.yml](./src/main/resources/application-opensearch.yml) for more details.  
 
