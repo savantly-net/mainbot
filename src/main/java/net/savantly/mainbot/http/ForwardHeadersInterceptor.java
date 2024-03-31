@@ -25,6 +25,7 @@ public class ForwardHeadersInterceptor implements HttpRequestInterceptor {
         for (var header : forwardedHeaders) {
             var value = context.getAttribute(header);
             if (value != null) {
+                log.debug("found {} header in HttpContext and adding to HttpRequest", header);
                 request.addHeader(header, value.toString());
             }
         }

@@ -4,6 +4,7 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * This class represents a service that is used to get the access token for a
@@ -24,11 +25,13 @@ spring.security.oauth2.client.provider.myclient.token-uri=https://example.com/oa
  * <p>
  */
 @RequiredArgsConstructor
+@Slf4j
 public class OAuth2ClientService {
 
     final private OAuth2AuthorizedClientService authorizedClientService;
 
     public String getAccessToken(String clientRegistrationId) {
+        log.info("Getting access token for client registration id: {}", clientRegistrationId);
         OAuth2AuthorizedClient client = this.authorizedClientService.loadAuthorizedClient(
                 clientRegistrationId,
                 clientRegistrationId);
