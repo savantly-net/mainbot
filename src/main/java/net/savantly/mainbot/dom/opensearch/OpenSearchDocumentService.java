@@ -44,6 +44,11 @@ public class OpenSearchDocumentService implements DocumentService {
         final DocumentPartCollection processedDoc = processorManager
                 .processDocument(DocumentPartCollection.fromAddRequest(documentRequest));
 
+        if (processedDoc.getParts().isEmpty()) {
+            log.warn("No document parts found in document");
+            return new ArrayList<>();
+        }
+
         // embed the document
         log.info("Embedding document: {} parts", processedDoc.getParts().size());
         for (var part : processedDoc.getParts()) {
@@ -69,10 +74,6 @@ public class OpenSearchDocumentService implements DocumentService {
         });
 
         try {
-            if (bulkRequest.operations().isEmpty()) {
-                log.warn("No document parts to index for document: {}", documentRequest.getUri());
-                return new ArrayList<>();
-            }
             client.bulk(bulkRequest);
         } catch (JacksonException e) {
             log.error("jackson exception. This occurs when the document is not serializable, or maybe there's authentication issues");
