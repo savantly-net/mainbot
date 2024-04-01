@@ -100,3 +100,38 @@ OPENAI_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxx
 OPENAI_CHAT_MODEL_ID=gpt-3.5-turbo
 OPENSEARCH_URL=https://localhost:9200
 ```
+
+## GitHub Action to upload
+
+If you store documents in your repository, you can easily upload them to mainbot.  
+Leverage the GitHub Action to upload text/markdown files directly to mainbot.  
+
+```yaml
+name: Upload Files to Mainbot
+
+on:
+  workflow_dispatch: {} # Manually trigger the workflow
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - 'README.md'
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Upload Files
+        uses: savantly-net/mainbot-github-action@main
+        with:
+          glob-patterns: '*.md'  # Set your file pattern here
+          namespace: '/mainbot-documents'
+          api-url: 'https://mainbot.my-company.apps.savantly.cloud'
+          client-id: ${{ secrets.MAINBOT_CLIENT_ID }}
+          client-secret: ${{ secrets.MAINBOT_CLIENT_SECRET }}
+          token-endpoint: https://oidc.apps.savantly.cloud/realms/savantly/protocol/openid-connect/token
+```
