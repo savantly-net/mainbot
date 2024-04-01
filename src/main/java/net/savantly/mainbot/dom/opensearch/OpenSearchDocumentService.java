@@ -45,6 +45,7 @@ public class OpenSearchDocumentService implements DocumentService {
                 .processDocument(DocumentPartCollection.fromAddRequest(documentRequest));
 
         // embed the document
+        log.info("Embedding document: {} parts", processedDoc.getParts().size());
         for (var part : processedDoc.getParts()) {
             var embeddingResponse = documentEmbedder.createEmbedding(part.getText());
             log.debug("embedding response: {}", embeddingResponse.tokenUsage());
@@ -80,8 +81,10 @@ public class OpenSearchDocumentService implements DocumentService {
 
         var docParts = new ArrayList<String>();
         for (var part : processedDoc.getParts()) {
+            log.debug("DocumentPart indexed: {}", part.getId());
             docParts.add(part.getId());
         }
+        log.info("DocumentParts indexed: {}", docParts.size());
         return docParts;
     }
 
