@@ -16,7 +16,6 @@ public class DocumentPartCollection {
     private String namespace;
     private String uri;
     private String text;
-    private boolean chunked;
     private Set<DocumentPart> parts = new HashSet<>();
     private Map<String, String> metadata = new HashMap<>();
 
@@ -35,7 +34,6 @@ public class DocumentPartCollection {
                 .setNamespace(request.getNamespace())
                 .setUri(request.getUri())
                 .setText(request.getText())
-                .setChunked(request.isChunk())
                 .setParts(new HashSet<>())
                 .setMetadata(request.getMetadata());
     }

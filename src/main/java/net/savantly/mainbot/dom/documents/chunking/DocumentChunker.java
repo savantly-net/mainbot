@@ -35,7 +35,7 @@ public class DocumentChunker implements DocumentProcessor {
             return document;
         }
 
-        if (document.hasParts() || document.isChunked()) {
+        if (document.hasParts()) {
             log.info("Document already chunked. parts: {}", document.getParts().size());
             return document;
         }
@@ -62,6 +62,7 @@ public class DocumentChunker implements DocumentProcessor {
                     .setText(segments.get(i).text());
             document.addPart(part);
         }
+        log.debug("Document chunked: {} into {} parts", document.getId(), document.getParts().size());
         return document;
     }
 
