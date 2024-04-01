@@ -69,6 +69,10 @@ public class OpenSearchDocumentService implements DocumentService {
         });
 
         try {
+            if (bulkRequest.operations().isEmpty()) {
+                log.warn("No document parts to index for document: {}", documentRequest.getUri());
+                return new ArrayList<>();
+            }
             client.bulk(bulkRequest);
         } catch (JacksonException e) {
             log.error("jackson exception. This occurs when the document is not serializable, or maybe there's authentication issues");
