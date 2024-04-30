@@ -135,3 +135,10 @@ jobs:
           client-secret: ${{ secrets.MAINBOT_CLIENT_SECRET }}
           token-endpoint: https://oidc.apps.savantly.cloud/realms/savantly/protocol/openid-connect/token
 ```
+
+## Backstage Integration
+
+We've also built a Backstage plugin to integrate with mainbot.  
+Combining the Github action and the Techdocs plugin, you can make all of your documentation immediately available in Backstage and searchable in mainbot.  
+
+![mianbot in backstage](./docs/images/backstage-integration.jpg)  
