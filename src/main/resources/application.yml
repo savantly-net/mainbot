@@ -17,6 +17,19 @@ spring:
   resources:
     chain:
       cache: 'false'
+  security:
+    oauth2:
+      client:
+        registration:
+          example:
+            client-id: ${OAUTH2_CLIENT_ID:client-id}
+            client-secret: ${OAUTH2_CLIENT_SECRET:client-secret}
+            authorization-grant-type: client_credentials
+            scope: ${OAUTH2_SCOPE:openid}
+        provider:
+          example:
+            token-uri: ${OAUTH2_TOKEN_URI:http://localhost:8080/oauth2/token}
+
 logging:
   level:
     dev:
@@ -88,3 +101,6 @@ pinecone:
 
 seed:
   enabled: false
+
+authorizaton:
+  addDocsExpression: hasRole('admin')

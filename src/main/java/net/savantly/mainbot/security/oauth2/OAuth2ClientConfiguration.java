@@ -1,5 +1,6 @@
 package net.savantly.mainbot.security.oauth2;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.security.oauth2.client.ClientsConfiguredCondition;
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
@@ -33,15 +34,16 @@ public class OAuth2ClientConfiguration {
      */
     // @Bean("authorizedClientManager")
     // public OAuth2AuthorizedClientManager authorizedClientManager(
-    //         OAuth2AuthorizedClientProvider authorizedClientProvider,
-    //         ClientRegistrationRepository clientRegistrationRepository,
-    //         OAuth2AuthorizedClientRepository authorizedClientRepository) {
-    //     log.info("Creating OAuth2AuthorizedClientManager");
-    //     DefaultOAuth2AuthorizedClientManager authorizedClientManager = new DefaultOAuth2AuthorizedClientManager(
-    //             clientRegistrationRepository, authorizedClientRepository);
-    //     authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
+    // OAuth2AuthorizedClientProvider authorizedClientProvider,
+    // ClientRegistrationRepository clientRegistrationRepository,
+    // OAuth2AuthorizedClientRepository authorizedClientRepository) {
+    // log.info("Creating OAuth2AuthorizedClientManager");
+    // DefaultOAuth2AuthorizedClientManager authorizedClientManager = new
+    // DefaultOAuth2AuthorizedClientManager(
+    // clientRegistrationRepository, authorizedClientRepository);
+    // authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
 
-    //     return authorizedClientManager;
+    // return authorizedClientManager;
     // }
 
     @Bean
@@ -78,6 +80,7 @@ public class OAuth2ClientConfiguration {
     }
 
     @Bean
+    @ConditionalOnBean({ ClientRegistrationRepository.class })
     public OAuth2AuthorizedClientService authorizedClientService(
             ClientRegistrationRepository clientRegistrationRepository) {
         log.info("Creating InMemoryOAuth2AuthorizedClientService");

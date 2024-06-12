@@ -3,6 +3,7 @@ package net.savantly.mainbot.api;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,11 +38,9 @@ public class DocumentApi {
         return ResponseEntity.ok(documentService.addDocument(document));
     }
 
+    @PreAuthorize("${authorization.addDocsExpression}")
     private boolean isUnauthorized(UserDto currentUser, DocumentAddRequest document) {
         log.info("checking authorization for user: {}", currentUser);
-        if (currentUser.getGroups().contains(authorizationConfig.getAdminGroup())) {
-            return false;
-        }
         if (currentUser.getGroups().contains(document.getNamespace())) {
             return false;
         }

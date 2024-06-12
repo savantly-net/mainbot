@@ -1,5 +1,7 @@
 package net.savantly.mainbot.identity;
 
+import java.util.List;
+
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -13,7 +15,7 @@ public class AnonymousUser {
     private String givenName = "Anonymous";
     private String familyName = "Anonymous";
     private String uid = "anonymous";
-    private String[] groups = new String[] {"anonymous"};
+    private String[] groups = new String[] { "anonymous" };
 
     public UserDto toDto() {
         return new UserDto()
@@ -22,6 +24,7 @@ public class AnonymousUser {
                 .setGivenName(givenName)
                 .setName(name)
                 .setUid(uid)
-                .setUsername(username);
+                .setUsername(username)
+                .setGroups(List.of(groups));
     }
 }

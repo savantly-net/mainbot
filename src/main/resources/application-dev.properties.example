@@ -1,2 +1,3 @@
 openai.apiKey=sk-XYZ
 openai.enabled=true
+authorization.addDocsExpression=true

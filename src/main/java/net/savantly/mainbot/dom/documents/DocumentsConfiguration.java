@@ -54,7 +54,8 @@ public class DocumentsConfiguration {
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     static enum DocumentServiceImplementationType {
         LC4J,
-        OPENSEARCH
+        OPENSEARCH,
+        NEO4J
     }
 
 }
