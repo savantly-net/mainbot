@@ -1,6 +1,7 @@
 package net.savantly.mainbot.security;
 
 import org.springframework.beans.BeansException;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -59,6 +60,7 @@ public class SecurityConfig implements ApplicationContextAware {
 	private ApplicationContext applicationContext;
 
 	@Bean
+	@ConditionalOnBean(OAuth2AuthorizedClientService.class)
 	public OAuth2ClientService oAuth2ClientService(OAuth2AuthorizedClientService authorizedClientService) {
 		return new OAuth2ClientService(authorizedClientService);
 	}
